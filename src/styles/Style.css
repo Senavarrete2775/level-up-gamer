@@ -313,4 +313,52 @@ input, select, textarea {
     .sidebar .nav-link {
         text-align: center;
     }
+
+    /* Búsca esto en tu archivo src/index.css para confirmarlo */
+
+    /* Estilos para el menú cuando está activo */
+    .nav-links.active {
+        transform: translateX(0); /* Esto hace que el menú aparezca */
+    }
+
+    /* Estilos para los enlaces de navegación en general */
+    .nav-links {
+        /* ...otros estilos... */
+        position: fixed;
+        top: 0;
+        right: 0;
+        background: #1b2838;
+        height: 100%;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(100%); /* Esto lo oculta fuera de la pantalla por defecto */
+        transition: transform 0.5s ease-in-out;
+    }
+
+
+
+    /* Estilos para el menú cuando está activo */
+    .nav-links.active {
+        transform: translateX(0); /* Esto hace que el menú aparezca */
+    }
+
+    /* Estilos para los enlaces de navegación en general */
+    .nav-links {
+        /* ...otros estilos... */
+        position: fixed;
+        top: 0;
+        right: 0;
+        background: #1b2838;
+        height: 100%;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(100%); /* Esto lo oculta fuera de la pantalla por defecto */
+        transition: transform 0.5s ease-in-out;
+    }
 }
