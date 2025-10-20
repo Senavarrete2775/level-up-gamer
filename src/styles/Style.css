@@ -1,0 +1,316 @@
+/* Estilos generales */
+:root {
+    --bg: #000;
+    --fg: #fff;
+    --muted: #cfcfcf;
+    --accent: #1E90FF;
+    --accent2: #39FF14;
+    --border: #1f1f1f;
+}
+
+html, body {
+    height: 100%;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent2);
+}
+
+header, footer {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+footer {
+    border-top: 1px solid var(--border);
+    border-bottom: none;
+    color: var(--muted);
+    margin-top: auto;
+    margin-bottom: 0;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 12px 16px;
+}
+
+.nav {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.nav a {
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+.nav a:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+h1, h2 {
+    margin: 12px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.card {
+    border: 1px solid var(--border);
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--muted);
+}
+
+.btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--accent2);
+    color: #000;
+}
+
+.btn.ghost {
+    background: transparent;
+    border: 1px solid var(--accent2);
+    color: var(--accent2);
+}
+
+.btn.ghost:hover {
+    background: var(--accent2);
+    color: #000;
+}
+
+img.resp {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: #0d0d0d;
+    color: #fff;
+}
+
+.form {
+    display: grid;
+    gap: 10px;
+    max-width: 500px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border-bottom: 1px solid var(--border);
+    padding: 8px;
+    text-align: left;
+}
+
+.price {
+    color: var(--accent2);
+    font-weight: bold;
+}
+
+.badge {
+    background: var(--accent);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+}
+
+.err {
+    color: #ff6b6b;
+    font-size: 13px;
+}
+
+/* Estilos del carrito */
+.cart-item {
+    border-bottom: 1px solid var(--border);
+    padding: 10px 0;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.cart-summary .form-control {
+    background: #0d0d0d;
+    border: 1px solid var(--border);
+    color: #fff;
+}
+
+
+/* Estilos de la barra de navegación hecha con bootstrap */
+.navbar {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar-brand img {
+    height: 40px;
+    transform: scale(1.5);
+    transform-origin: left center;
+}
+
+.navbar-nav .nav-link {
+    color: var(--accent);
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+.navbar-nav .nav-link:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+.navbar-toggler {
+    border-color: var(--accent);
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+
+.navbar-nav .login-btn,
+.navbar-nav .register-btn:hover {
+    background: var(--accent2);
+    color: #000 !important;
+}
+
+.navbar-nav .login-btn:hover,
+.navbar-nav .register-btn:hover {
+    background: #0e223a;
+    color: #fff !important;
+}
+
+.navbar-nav .cart-icon {
+    position: relative;
+    color: var(--accent);
+}
+
+.navbar-nav .cart-icon:hover {
+    color: var(--accent2);
+}
+
+.navbar-nav .cart-icon .badge {
+    position: absolute;
+    top: -4px;
+    right: -10px;
+}
+
+/* Estilos para la sección de bienvenida */
+.intro-card {
+    background: #000;
+    color: var(--accent);
+    border-color: var(--accent2);
+}
+
+.intro-card .btn {
+    background: var(--accent2);
+    color: #000;
+}
+
+.intro-card .btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+.alert-danger {
+    background-color: var(--bg);
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+}
+
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: var(--bg);
+    border-right: 1px solid var(--border);
+}
+
+.sidebar .nav-link {
+    color: var(--accent);
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+.sidebar .nav-link:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+.sidebar .logo {
+    height: 40px;
+}
+
+@media (max-width: 768px) {
+    footer {
+        height: auto;
+        line-height: 1.5;
+        padding: 20px 16px;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar .nav-link {
+        text-align: center;
+    }
+}
