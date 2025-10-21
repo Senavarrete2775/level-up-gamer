@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,9 +23,10 @@ const Header = () => {
                         <li><a href="#">Contacto</a></li>
                     </ul>
                 </nav>
-                <a href="#" className="btn">
+
+                <Link to="/login" className="btn">
                     <button>Login</button>
-                </a>
+                </Link>
             </div>
 
             <a href="#" className="menu" onClick={handleMenuToggle}>
