@@ -27,7 +27,7 @@ const gamesData = [
 ];
 function MainContent() {
     return (
-        <main>
+        <main className="main-content">
             {/* Sección principal (hero) */}
             <section className="section-1">
                 <div className="container">

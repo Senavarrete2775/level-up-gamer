@@ -3,15 +3,15 @@ import Header from './components/Header';
 import Slider from './components/Slider';
 import Products from './components/Products';
 import Footer from './components/Footer';
+import MainContent from './components/MainContent';
 
 function App() {
     return (
-        <div className="App">
+        <>
             <Header />
-            <Slider />
-            <Products />
+            <MainContent />
             <Footer />
-        </div>
+        </>
     );
 }
 

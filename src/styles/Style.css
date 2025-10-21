@@ -1,329 +1,240 @@
-/* Estilos generales */
-:root {
-    --bg: #000;
-    --fg: #fff;
-    --muted: #cfcfcf;
-    --accent: #1E90FF;
-    --accent2: #39FF14;
-    --border: #1f1f1f;
-}
-
-html, body {
-    height: 100%;
-}
-
-
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--bg);
-    color: var(--fg);
+body, #root {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #1b2838;
+    color: #c7d5e0;
 }
 
-main {
-    flex: 1;
-}
+.header {
+    /* Posicionamiento y efecto de cristal (esto se queda igual) */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 85px;
+    background-color: rgba(23, 26, 33, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
-a {
-    color: var(--accent);
-    text-decoration: none;
-}
-
-a:hover {
-    color: var(--accent2);
-}
-
-header, footer {
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
-}
-
-footer {
-    border-top: 1px solid var(--border);
-    border-bottom: none;
-    color: var(--muted);
-    margin-top: auto;
-    margin-bottom: 0;
-    height: 80px;
-    line-height: 80px;
-    text-align: center;
-}
-
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 12px 16px;
-}
-
-.nav {
+    /* 👇 Añade estas 4 líneas de vuelta 👇 */
     display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
+    justify-content: space-between; /* Esto empuja todo a los extremos */
+    align-items: center;
+    padding: 0 5%; /* Un margen de 5% a cada lado */
 }
 
-.nav a {
-    padding: 6px 10px;
-    border-radius: 8px;
+.header-container {
+    width: 100%;
+    max-width: 1280px; /* Ancho máximo, ajústalo a tu gusto */
+    margin: 0 auto; /* ¡Esto lo centra horizontalmente! */
+
+    /* Le pasamos las propiedades de Flexbox aquí */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 100%; /* Ocupa toda la altura del header padre */
+    padding: 0 20px; /* Un pequeño padding para que no se pegue a los bordes en pantallas más pequeñas */
 }
 
-.nav a:hover {
-    background: var(--accent);
-    color: #fff;
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-h1, h2 {
-    margin: 12px 0;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
-}
-
-.card {
-    border: 1px solid var(--border);
-    padding: 10px;
-    border-radius: 10px;
-    background: var(--bg);
-    color: var(--muted);
-}
-
-.btn {
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
+.header .logo {
     cursor: pointer;
 }
 
-.btn:hover {
-    background: var(--accent2);
-    color: #000;
+.header .logo img {
+    height: 70px;
+    width: auto;
+    transition: all 0.3s;
 }
 
-.btn.ghost {
-    background: transparent;
-    border: 1px solid var(--accent2);
-    color: var(--accent2);
+.header .logo img:hover {
+    transform: scale(1.2);
 }
 
-.btn.ghost:hover {
-    background: var(--accent2);
-    color: #000;
+.header .nav-links {
+    color: #b8b6b4;
 }
 
-img.resp {
+.header .nav-links li {
+    display: inline-block;
+    padding: 0 20px;
+    color: #c7d5e0;
+}
+
+.header .nav-links li:hover {
+    transform: scale(1.1);
+}
+
+.header .nav-links a {
+    list-style: none;
+}
+
+.header .nav-links li a:hover {
+    color: #c7d5e0;
+}
+
+.header .btn button {
+    margin-left: 20px;
+    font-weight: 700;
+    color: #1b2838;
+    padding: 9px 25px;
+    background: #c7d5e0;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.header .btn button:hover {
+    background-color: #b8b6b4;
+    color: #1b2838;
+    transform: scale(1.1);
+}
+
+.menu {
+    display: none;
+}
+
+/* SLIDER */
+.slider-frame {
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slider-frame ul {
+    display: flex;
+    padding: 0;
+    width: 400%;
+    animation: slide 20s infinite alternate ease-in-out;
+}
+
+.slider-frame li {
+    width: 100%;
+    list-style: none;
+}
+
+.slider-frame img {
     width: 100%;
     height: auto;
+}
+
+@keyframes slide {
+    0% { margin-left: 0; }
+    20% { margin-left: 0; }
+    25% { margin-left: -100%; }
+    45% { margin-left: -100%; }
+    50% { margin-left: -200%; }
+    70% { margin-left: -200%; }
+    75% { margin-left: -300%; }
+    100% { margin-left: -300%; }
+}
+
+/* JUEGOS */
+.titulo-juegos {
+    text-align: center;
+    padding: 20px;
+    color: #c7d5e0;
+}
+
+.flex-juegos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.caja {
+    width: 300px;
+    height: auto;
     border-radius: 8px;
+    margin: 20px;
+    background: #171a21;
+    color: #c7d5e0;
 }
 
-input, select, textarea {
+.caja img {
     width: 100%;
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: #0d0d0d;
-    color: #fff;
+    height: auto;
+    border-radius: 8px 8px 0 0;
 }
 
-.form {
-    display: grid;
-    gap: 10px;
-    max-width: 500px;
+.info {
+    padding: 20px;
 }
 
-.table {
-    width: 100%;
-    border-collapse: collapse;
+.categoria {
+    font-size: 14px;
+    color: #b8b6b4;
 }
 
-.table th, .table td {
-    border-bottom: 1px solid var(--border);
-    padding: 8px;
-    text-align: left;
-}
-
-.price {
-    color: var(--accent2);
+.nombre-juego {
+    font-size: 18px;
     font-weight: bold;
+    margin: 10px 0;
 }
 
-.badge {
-    background: var(--accent);
-    color: #fff;
-    padding: 2px 8px;
-    border-radius: 999px;
-    font-size: 12px;
+.precio {
+    font-size: 16px;
+    color: #66c0f4;
 }
 
-.err {
-    color: #ff6b6b;
-    font-size: 13px;
+.btn-juego button {
+    margin-top: 20px;
+    font-weight: 700;
+    color: #c7d5e0;
+    padding: 9px 25px;
+    background: #66c0f4;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
 }
 
-/* Estilos del carrito */
-.cart-item {
-    border-bottom: 1px solid var(--border);
-    padding: 10px 0;
+.btn-juego button:hover {
+    background: #66c0f4;
+    color: #c7d5e0;
 }
 
-.cart-item:last-child {
-    border-bottom: none;
+/* FOOTER */
+.footer-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #171a21;
+    padding: 20px;
+    color: #b8b6b4;
 }
 
-.cart-item img {
-    width: 100%;
-    border-radius: 8px;
-}
-
-.cart-summary .form-control {
-    background: #0d0d0d;
-    border: 1px solid var(--border);
-    color: #fff;
+.main-content {
+    flex: 1;
 }
 
 
-/* Estilos de la barra de navegación hecha con bootstrap */
-.navbar {
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-}
 
-.navbar-brand img {
-    height: 40px;
-    transform: scale(1.5);
-    transform-origin: left center;
-}
 
-.navbar-nav .nav-link {
-    color: var(--accent);
-    padding: 6px 10px;
-    border-radius: 8px;
-}
-
-.navbar-nav .nav-link:hover {
-    background: var(--accent);
-    color: #fff;
-}
-
-.navbar-toggler {
-    border-color: var(--accent);
-}
-
-.navbar-toggler-icon {
-    filter: invert(1);
-}
-
-.navbar-nav .login-btn,
-.navbar-nav .register-btn:hover {
-    background: var(--accent2);
-    color: #000 !important;
-}
-
-.navbar-nav .login-btn:hover,
-.navbar-nav .register-btn:hover {
-    background: #0e223a;
-    color: #fff !important;
-}
-
-.navbar-nav .cart-icon {
-    position: relative;
-    color: var(--accent);
-}
-
-.navbar-nav .cart-icon:hover {
-    color: var(--accent2);
-}
-
-.navbar-nav .cart-icon .badge {
-    position: absolute;
-    top: -4px;
-    right: -10px;
-}
-
-/* Estilos para la sección de bienvenida */
-.intro-card {
-    background: #000;
-    color: var(--accent);
-    border-color: var(--accent2);
-}
-
-.intro-card .btn {
-    background: var(--accent2);
-    color: #000;
-}
-
-.intro-card .btn:hover {
-    background: #fff;
-    color: #000;
-}
-
-.alert-danger {
-    background-color: var(--bg);
-    color: #ff6b6b;
-    border: 1px solid #ff6b6b;
-}
-
-.sidebar {
-    width: 250px;
-    min-height: 100vh;
-    background: var(--bg);
-    border-right: 1px solid var(--border);
-}
-
-.sidebar .nav-link {
-    color: var(--accent);
-    padding: 6px 10px;
-    border-radius: 8px;
-}
-
-.sidebar .nav-link:hover {
-    background: var(--accent);
-    color: #fff;
-}
-
-.sidebar .logo {
-    height: 40px;
-}
-
-@media (max-width: 768px) {
-    footer {
-        height: auto;
-        line-height: 1.5;
-        padding: 20px 16px;
+@media screen and (max-width: 858px) {
+    .nav-right {
+        display: none;
+    }
+    .menu {
+        display: block;
     }
 
-    .sidebar {
-        width: 100%;
-        min-height: auto;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .sidebar .nav-link {
-        text-align: center;
-    }
-
-    /* Búsca esto en tu archivo src/index.css para confirmarlo */
-
-    /* Estilos para el menú cuando está activo */
-    .nav-links.active {
-        transform: translateX(0); /* Esto hace que el menú aparezca */
-    }
-
-    /* Estilos para los enlaces de navegación en general */
-    .nav-links {
-        /* ...otros estilos... */
+    .header .nav-links {
         position: fixed;
         top: 0;
         right: 0;
@@ -334,31 +245,12 @@ input, select, textarea {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transform: translateX(100%); /* Esto lo oculta fuera de la pantalla por defecto */
+        transform: translateX(100%);
         transition: transform 0.5s ease-in-out;
     }
 
-
-
-    /* Estilos para el menú cuando está activo */
-    .nav-links.active {
-        transform: translateX(0); /* Esto hace que el menú aparezca */
+    .header .nav-links.active {
+        transform: translateX(0);
     }
 
-    /* Estilos para los enlaces de navegación en general */
-    .nav-links {
-        /* ...otros estilos... */
-        position: fixed;
-        top: 0;
-        right: 0;
-        background: #1b2838;
-        height: 100%;
-        width: 60%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transform: translateX(100%); /* Esto lo oculta fuera de la pantalla por defecto */
-        transition: transform 0.5s ease-in-out;
-    }
 }
