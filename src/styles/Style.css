@@ -253,4 +253,22 @@ body, #root {
         transform: translateX(0);
     }
 
+
+    .card {
+        background-color: #171a21; /* Mismo color de fondo que las cajas anteriores */
+        color: #c7d5e0;
+        border: none;
+    }
+
+    /* Ajustes para el texto dentro de las tarjetas */
+    .card .card-text.text-muted {
+        color: #b8b6b4 !important; /* Usamos !important para sobreescribir Bootstrap */
+    }
+
+    /* Ajustes para la sección hero */
+    .section-1 {
+        padding: 60px 0;
+        background-color: #1b2838; /* Fondo principal */
+    }
+
 }
