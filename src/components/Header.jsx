@@ -18,9 +18,11 @@ const Header = () => {
             <div className="nav-right">
                 <nav>
                     <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-                        <li><a href="#">Inicio</a></li>
+                        <li><Link to="/">Inicio</Link></li>
                         <li><a href="#">Juegos</a></li>
-                        <li><a href="#">Contacto</a></li>
+                        <li><Link to="/nosotros">Nosotros</Link></li>
+                        <li><Link to="/contacto">Contacto</Link></li>
+                        <li><Link to="/productos">Tienda</Link></li>
                     </ul>
                 </nav>
 

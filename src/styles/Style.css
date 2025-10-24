@@ -5,12 +5,34 @@
     font-family: sans-serif;
 }
 
+/* src/styles/Style.css */
+
+:root {
+    --color-fondo-principal: #000000;
+    --color-acento1: #1E90FF;
+    --color-acento2: #39FF14;
+    --color-texto-principal: #FFFFFF;
+    --color-texto-secundario: #D3D3D3;
+
+    --fuente-principal: 'Roboto', sans-serif;
+    --fuente-encabezado: 'Orbitron', sans-serif;
+
+    --color-gris-oscuro: #171a21;
+    --color-azul-oscuro: #1b2838;
+}
+
 body, #root {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #1b2838;
-    color: #c7d5e0;
+    background-color: var(--color-fondo-principal);
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-principal);
+}
+
+h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
+    font-family: var(--fuente-encabezado);
+    color: var(--color-texto-principal);
 }
 
 .header {
@@ -158,18 +180,69 @@ body, #root {
 }
 
 .caja {
-    width: 300px;
-    height: auto;
+    background: var(--color-gris-oscuro); /* #171a21 */
+    color: var(--color-texto-secundario); /* Gris Claro [cite: 86] */
     border-radius: 8px;
     margin: 20px;
-    background: #171a21;
-    color: #c7d5e0;
+    height: 100%; /* Ayuda a que las tarjetas se vean uniformes */
+    display: flex;
+    flex-direction: column;
 }
 
 .caja img {
     width: 100%;
-    height: auto;
+    height: 225px; /* Altura fija para la imagen */
+    object-fit: cover; /* Evita que la imagen se deforme */
     border-radius: 8px 8px 0 0;
+}
+
+.caja .info {
+    padding: 20px;
+    flex: 1; /* Empuja el botón al fondo */
+    display: flex;
+    flex-direction: column;
+}
+
+.caja .categoria {
+    font-size: 14px;
+    color: var(--color-texto-secundario); /* Gris Claro [cite: 86] */
+    font-family: var(--fuente-principal);
+}
+
+.caja .nombre-juego {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    font-family: var(--fuente-encabezado); /* Fuente Orbitron [cite: 80] */
+    color: var(--color-texto-principal); /* Blanco [cite: 84] */
+    flex: 1; /* Ocupa el espacio disponible */
+}
+
+.caja .precio {
+    font-size: 16px;
+    color: var(--color-acento2); /* Verde Neón [cite: 71] */
+    font-weight: bold;
+}
+
+.caja .btn-juego button {
+    margin-top: 20px;
+    font-weight: 700;
+    padding: 9px 25px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    width: 100%; /* Ocupa todo el ancho */
+
+    /* Colores oficiales para botones [cite: 71] */
+    background-color: var(--color-acento1); /* Azul Eléctrico */
+    color: var(--color-fondo-principal); /* Texto Negro */
+    font-family: var(--fuente-encabezado);
+}
+
+.caja .btn-juego button:hover {
+    background-color: var(--color-acento2); /* Verde Neón al pasar el mouse */
+    transform: scale(1.05);
 }
 
 .info {
@@ -180,6 +253,7 @@ body, #root {
     font-size: 14px;
     color: #b8b6b4;
 }
+
 
 .nombre-juego {
     font-size: 18px;
@@ -255,8 +329,8 @@ body, #root {
 
 
     .card {
-        background-color: #171a21; /* Mismo color de fondo que las cajas anteriores */
-        color: #c7d5e0;
+        background-color: var(--color-gris-oscuro);
+        color: var(--color-texto-secundario);
         border: none;
     }
 
@@ -269,6 +343,79 @@ body, #root {
     .section-1 {
         padding: 60px 0;
         background-color: #1b2838; /* Fondo principal */
+    }
+
+    /* --- Estilos Página Nosotros --- */
+    .nosotros-container {
+        width: 80%;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #171a21; /* Fondo oscuro de tarjeta */
+        border-radius: 8px;
+        color: #c7d5e0;
+    }
+
+    .titulo-nosotros {
+        text-align: center;
+        color: #66c0f4; /* Celeste de acento */
+        margin-bottom: 20px;
+    }
+
+    .parrafo-nosotros {
+        font-size: 1.1em;
+        line-height: 1.6;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .nosotros-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Dos columnas */
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+
+    .mision, .vision {
+        background-color: #1b2838; /* Fondo principal más oscuro */
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .mision h2, .vision h2 {
+        color: #66c0f4;
+        margin-bottom: 15px;
+    }
+
+    .imagen-nosotros img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    /* Hacemos que las columnas se apilen en pantallas pequeñas */
+    @media screen and (max-width: 858px) {
+        .nosotros-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Sobreescribir botones de Bootstrap */
+    .btn-warning {
+        background-color: var(--color-acento2) !important; /* Verde Neón */
+        color: var(--color-fondo-principal) !important; /* Texto negro */
+        border: none !important;
+        font-family: var(--fuente-encabezado);
+        font-weight: bold;
+    }
+
+    .btn-outline-dark, .btn-outline-warning {
+        border-color: var(--color-acento1) !important; /* Azul Eléctrico */
+        color: var(--color-acento1) !important;
+        font-family: var(--fuente-encabezado);
+    }
+    .btn-outline-dark:hover, .btn-outline-warning:hover {
+        background-color: var(--color-acento1) !important;
+        color: var(--color-fondo-principal) !important;
     }
 
 }
