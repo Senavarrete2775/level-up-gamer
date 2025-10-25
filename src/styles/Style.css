@@ -214,43 +214,6 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     transform: scale(1.05);
 }
 
-.info {
-    padding: 20px;
-}
-
-.categoria {
-    font-size: 14px;
-    color: #b8b6b4;
-}
-
-
-.nombre-juego {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 10px 0;
-}
-
-.precio {
-    font-size: 16px;
-    color: #66c0f4;
-}
-
-.btn-juego button {
-    margin-top: 20px;
-    font-weight: 700;
-    color: #c7d5e0;
-    padding: 9px 25px;
-    background: #66c0f4;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-}
-
-.btn-juego button:hover {
-    background: #66c0f4;
-    color: #c7d5e0;
-}
 
 /* FOOTER */
 .footer-flex {
@@ -382,6 +345,119 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     color: var(--color-fondo-principal) !important; /* Texto Negro */
 }
 
+.video-hero-section {
+    width: 100%;
+    /* Fondo oscuro para el área de texto, por si acaso */
+    background-color: #111;
+}
+
+/* Este truco mantiene la proporción 16:9 del video */
+.video-player-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 (9 / 16 = 0.5625) */
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.video-player-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Contenido debajo del video */
+.video-hero-content {
+    background-color: var(--color-fondo-principal);
+}
+
+.video-hero-subtitle {
+    /* Usamos el color Azul Eléctrico */
+    color: var(--color-acento1);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    font-family: var(--fuente-encabezado);
+}
+
+.video-hero-title {
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-encabezado);
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+/* --- Estilos del Carrusel de Miniaturas --- */
+.video-carousel-section {
+    background-color: var(--color-fondo-principal);
+    padding-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.video-carousel-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.video-thumbnail {
+    width: 220px;
+    height: 124px; /* Proporción 16:9 */
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: grayscale(100%);
+    border: 3px solid transparent;
+    flex-shrink: 0;
+}
+
+.video-thumbnail:hover {
+    filter: grayscale(0%); /* Color al pasar el mouse */
+}
+
+/* Estilo para la miniatura activa */
+.video-thumbnail.active {
+    filter: grayscale(0%); /* Color */
+    /* Borde Azul Eléctrico */
+    border: 3px solid var(--color-acento1);
+    transform: scale(1.05); /* Un poco más grande */
+}
+
+.video-carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-arrow {
+    background-color: transparent;
+    border: 2px solid var(--color-acento1);
+    color: var(--color-acento1);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.carousel-arrow:hover {
+    background-color: var(--color-acento1);
+    color: var(--color-fondo-principal);
+    transform: scale(1.1);
+}
+
 
 @media screen and (max-width: 858px) {
     .nav-right {
@@ -407,5 +483,6 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     .nosotros-grid {
         grid-template-columns: 1fr;
     }
+
 }
 
