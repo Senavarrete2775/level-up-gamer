@@ -72,27 +72,36 @@ function MainContent() {
     const [selectedVideo, setSelectedVideo] = useState(videosData[0]);
     const carouselRef = useRef(null);
 
-    const scrollLeft = () => {
-        console.log('Intentando scroll Izquierda');
-        if (carouselRef.current) {
-            requestAnimationFrame(() => {
-                carouselRef.current.scrollBy({ left: -250, behavior: 'smooth' });
-            });
+    const currentIndex = videosData.findIndex(v => v.id === selectedVideo.id);
+
+    const scrollToActiveThumb = (id) => {
+        const el = carouselRef.current?.querySelector(`[data-vid="${id}"]`);
+        if (el) {
+            el.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
         }
+    };
+
+    const scrollLeft = () => {
+        const nextIdx = (currentIndex - 1 + videosData.length) % videosData.length;
+        const nextVideo = videosData[nextIdx];
+        setSelectedVideo(nextVideo);
+        scrollToActiveThumb(nextVideo.id);
+
+        carouselRef.current?.scrollBy({ left: -250, behavior: 'smooth' });
     };
 
     const scrollRight = () => {
-        console.log('Intentando scroll Derecha');
-        if (carouselRef.current) {
-            requestAnimationFrame(() => {
-                carouselRef.current.scrollBy({ left: 250, behavior: 'smooth' });
-            });
-        }
+        const nextIdx = (currentIndex + 1) % videosData.length;
+        const nextVideo = videosData[nextIdx];
+        setSelectedVideo(nextVideo);
+        scrollToActiveThumb(nextVideo.id);
+
+        carouselRef.current?.scrollBy({ left: 250, behavior: 'smooth' });
     };
 
     const handleThumbnailClick = (video) => {
-        console.log('Cambiando video a:', video.title);
         setSelectedVideo(video);
+        scrollToActiveThumb(video.id);
     };
 
     return (

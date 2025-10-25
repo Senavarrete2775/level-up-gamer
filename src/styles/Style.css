@@ -447,4 +447,11 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     .nosotros-grid {
         grid-template-columns: 1fr;
     }
+
+    .video-carousel-container {
+        display: flex;
+        gap: 15px;
+        overflow-x: auto;
+        scroll-behavior: smooth; /* <— útil */
+    }
 }
