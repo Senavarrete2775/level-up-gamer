@@ -34,7 +34,7 @@ const Products = () => {
         <main>
             <h1 className="titulo-juegos">Nuevos Lanzamientos</h1>
             <div className="flex-juegos">
-                {/* 3. Mapeamos (recorremos) el arreglo de juegos */}
+
                 {gamesData.map((game, index) => (
                     <GameCard
                         key={index} // key es importante para React

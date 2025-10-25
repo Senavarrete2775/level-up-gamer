@@ -2,7 +2,7 @@ import React from 'react';
 
 const NosotrosPage = () => {
     return (
-        // Usamos main-content para que el footer se mantenga abajo
+
         <main className="main-content">
             <div className="nosotros-container">
                 <h1 className="titulo-nosotros">Sobre Level UP Gamer</h1>
@@ -29,7 +29,7 @@ const NosotrosPage = () => {
                     </div>
                 </div>
                 <div className="imagen-nosotros">
-                    {/* Asegúrate de tener esta imagen en tu carpeta /public/img/ */}
+
                     <img src="/logo_completo_bg_negro.png" alt="Equipo de Level UP Gamer" />
                 </div>
             </div>

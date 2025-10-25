@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 
 const Contactopage = () => {
-    // Estados para guardar lo que el usuario escribe
+
     const [nombre, setNombre] = useState('');
     const [email, setEmail] = useState('');
     const [mensaje, setMensaje] = useState('');
 
-    // Función que se ejecuta al enviar el formulario
+
     const handleSubmit = (e) => {
         e.preventDefault(); // Evita que la página se recargue
 
-        // Aquí iría la lógica para enviar el email.
-        // Por ahora, solo mostramos una alerta.
         alert(`¡Mensaje enviado! Gracias por contactarnos, ${nombre}.`);
 
         // Limpiamos los campos del formulario
@@ -21,7 +19,7 @@ const Contactopage = () => {
     };
 
     return (
-        // Usamos main-content para que el footer se mantenga abajo
+
         <main className="main-content">
             <div className="container py-5" style={{ maxWidth: '800px' }}>
                 <div className="row justify-content-center">
@@ -31,7 +29,7 @@ const Contactopage = () => {
                             ¿Tienes alguna duda, sugerencia o quieres colaborar? Llena el formulario y nos pondremos en contacto contigo.
                         </p>
 
-                        {/* Usamos las clases de Bootstrap "card" y "form-control" */}
+
                         <div className="card shadow-sm">
                             <div className="card-body p-5">
                                 <form onSubmit={handleSubmit}>

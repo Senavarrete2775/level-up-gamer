@@ -10,14 +10,14 @@ const RegistroPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Validación del requisito de edad
+
         if (!isOver18) {
             setError('Debes ser mayor de 18 años para registrarte.');
             return;
         }
 
-        setError(''); // Limpiamos errores previos
-        // --- Lógica de Registro iría aquí ---
+        setError('');
+
         alert(`¡Registro exitoso para: ${email}!`);
     };
 
@@ -71,10 +71,9 @@ const RegistroPage = () => {
                                 </label>
                             </div>
 
-                            {/* Mostrar error si existe */}
+
                             {error && <div className="alert alert-danger p-2">{error}</div>}
 
-                            {/* Usamos el color Verde Neón (Acento 2) para el botón principal */}
                             <button type="submit" className="btn btn-warning w-100 mt-2">Registrarse</button>
                         </form>
                         <div className="text-center mt-3">

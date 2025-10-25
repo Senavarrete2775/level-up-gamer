@@ -1,6 +1,5 @@
 import React from 'react';
 
-// Recibimos los datos del juego como "props"
 const GameCard = ({ image, category, title, price }) => {
     return (
         <div className="caja">
