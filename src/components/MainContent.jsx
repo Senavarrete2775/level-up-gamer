@@ -1,10 +1,7 @@
-
-
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import GameCard from "./GameCard"; // Importamos la tarjeta
+import GameCard from "./GameCard";
 
-// --- 1. DATOS DE VIDEOS (Con URL de miniatura arreglada) ---
 const videosData = [
     {
         id: 1,
@@ -43,8 +40,7 @@ const videosData = [
     },
 ];
 
-
-const gamesData = [
+const productsData = [
     {
         id: 1,
         title: "Cyberpunk 2077",
@@ -66,6 +62,41 @@ const gamesData = [
         category: "PC / PS4 / Xbox",
         price: "39.99",
     },
+    {
+        id: 4,
+        title: "Cyberpunk 2077",
+        image: "assets/img/cyberpunk.webp",
+        category: "PC / PS5 / Xbox",
+        price: "49.99",
+    },
+    {
+        id: 5,
+        title: "Starfield",
+        image: "assets/img/starfield.jpg",
+        category: "PC / Xbox",
+        price: "69.99",
+    },
+    {
+        id: 6,
+        title: "Red Dead Redemption 2",
+        image: "assets/img/rdr2.jpg",
+        category: "PC / PS4 / Xbox",
+        price: "39.99",
+    },
+    {
+        id: 7,
+        title: "Cyberpunk 2077",
+        image: "assets/img/cyberpunk.webp",
+        category: "PC / PS5 / Xbox",
+        price: "49.99",
+    },
+    {
+        id: 8,
+        title: "Starfield",
+        image: "assets/img/starfield.jpg",
+        category: "PC / Xbox",
+        price: "69.99",
+    },
 ];
 
 function MainContent() {
@@ -81,22 +112,23 @@ function MainContent() {
         }
     };
 
-    const scrollLeft = () => {
-        const nextIdx = (currentIndex - 1 + videosData.length) % videosData.length;
+    const changeVideo = (direction) => {
+        const nextIdx =
+            direction === "left"
+                ? (currentIndex - 1 + videosData.length) % videosData.length
+                : (currentIndex + 1) % videosData.length;
+
         const nextVideo = videosData[nextIdx];
         setSelectedVideo(nextVideo);
         scrollToActiveThumb(nextVideo.id);
 
-        carouselRef.current?.scrollBy({ left: -250, behavior: 'smooth' });
-    };
-
-    const scrollRight = () => {
-        const nextIdx = (currentIndex + 1) % videosData.length;
-        const nextVideo = videosData[nextIdx];
-        setSelectedVideo(nextVideo);
-        scrollToActiveThumb(nextVideo.id);
-
-        carouselRef.current?.scrollBy({ left: 250, behavior: 'smooth' });
+        // Scroll del carrusel con animación suave
+        requestAnimationFrame(() => {
+            carouselRef.current?.scrollBy({
+                left: direction === "left" ? -250 : 250,
+                behavior: "smooth",
+            });
+        });
     };
 
     const handleThumbnailClick = (video) => {
@@ -107,7 +139,7 @@ function MainContent() {
     return (
         <main className="main-content">
 
-            {/* --- SECCIÓN DE VIDEO --- */}
+            {/* --- SECCIÓN DE VIDEO PRINCIPAL --- */}
             <section className="video-hero-section">
                 <div className="video-player-wrapper">
                     <iframe
@@ -129,40 +161,37 @@ function MainContent() {
                 </div>
             </section>
 
-            {/* --- CARRUSEL DE MINIATURAS (SOLO UNO) --- */}
+            {/* --- CARRUSEL DE MINIATURAS --- */}
             <section className="video-carousel-section">
-                <button className="carousel-arrow" onClick={scrollLeft}>
+                <button className="carousel-arrow" onClick={() => changeVideo("left")}>
                     &lt;
                 </button>
+
                 <div className="video-carousel-container" ref={carouselRef}>
                     {videosData.map(video => (
                         <div
                             key={video.id}
+                            data-vid={video.id}
                             className={`video-thumbnail ${video.id === selectedVideo.id ? 'active' : ''}`}
                             style={{ backgroundImage: `url(${video.thumbnailUrl})` }}
                             onClick={() => handleThumbnailClick(video)}
                         />
                     ))}
                 </div>
-                <button className="carousel-arrow" onClick={scrollRight}>
+
+                <button className="carousel-arrow" onClick={() => changeVideo("right")}>
                     &gt;
                 </button>
             </section>
 
-            {/* --- SECCIÓN JUEGOS DESTACADOS --- */}
+            {/* --- productos destacados --- */}
             <section id="featured" className="py-5">
                 <div className="container">
-                    <h2 className="text-center mb-5">Juegos Destacados</h2>
+                    <h2 className="text-center mb-5">Artículos destacados</h2>
                     <div className="row justify-content-center">
-                        {gamesData.map(game => (
+                        {productsData.map(game => (
                             <div className="col-lg-4 col-md-6 mb-4" key={game.id}>
-                                <GameCard
-                                    key={game.id}
-                                    image={game.image}
-                                    category={game.category}
-                                    title={game.title}
-                                    price={game.price}
-                                />
+                                <GameCard product={game} />
                             </div>
                         ))}
                     </div>
@@ -177,7 +206,9 @@ function MainContent() {
                         <div className="col-lg-6 mb-4">
                             <div className="card shadow-sm">
                                 <div className="card-body">
-                                    <h5 className="card-title">Halo: Campaign Evolved llega a PS5 en 2026 con cooperativo, cross-play y misiones inéditas</h5>
+                                    <h5 className="card-title">
+                                        Halo: Campaign Evolved llega a PS5 en 2026 con cooperativo, cross-play y misiones inéditas
+                                    </h5>
                                     <p className="card-text text-muted">25 octubre, 2025</p>
                                     <p className="card-text">
                                         Halo llega por primera vez a PlayStation: “Halo: Campaign Evolved”, remake de la campaña original, se lanzará en PS5 en 2026 con cooperativo local y online.

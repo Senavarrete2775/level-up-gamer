@@ -78,12 +78,7 @@ const TiendaPage = () => {
 
                     {productsData.map(product => (
                         <div className="col-lg-4 col-md-6 mb-4" key={product.id}>
-                            <GameCard
-                                image={product.image}
-                                category={product.category}
-                                title={product.title}
-                                price={product.price}
-                            />
+                            <GameCard product={product} />
                         </div>
                     ))}
 

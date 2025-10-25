@@ -9,12 +9,12 @@ import Header from './components/Header';
 import MainContent from './components/MainContent';
 import LoginPage from './components/LoginPage'; // 2. Importa la nueva página de Login
 import Footer from './components/Footer';
+import CartPage from './components/CartPage';
 
 function App() {
     return (
         <>
             <Header />
-
             <Routes>
                 <Route path="/" element={<MainContent />} />
                 <Route path="/login" element={<LoginPage />} />
@@ -22,6 +22,8 @@ function App() {
                 <Route path="/nosotros" element={<NosotrosPage />}/>
                 <Route path="/contacto" element={<Contactopage />} />
                 <Route path="/tienda" element={<TiendaPage />} />
+                <Route path="/tienda" element={<TiendaPage />} />
+                <Route path="/cart" element={<CartPage />} />
             </Routes>
             <Footer />
         </>

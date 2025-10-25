@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from 'context/CartContext';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,6 +26,21 @@ const Header = () => {
                         <li><Link to="/login">Login</Link></li>
                     </ul>
                 </nav>
+
+                <div className="auth-buttons d-flex align-items-center">
+
+                    <Link to="/cart" className="me-3" style={{ color: 'var(--color-texto-secundario)', textDecoration: 'none', position: 'relative' }}>
+                        🛒
+                        {totalItems > 0 && (
+                            <span
+                                className="badge rounded-pill bg-danger"
+                                style={{ position: 'absolute', top: '-10px', right: '-10px', fontSize: '0.7em' }}
+                            >
+                                {totalItems}
+                            </span>
+                        )}
+                    </Link>
+
                 <div className="auth-buttons">
                     <Link to="/registro" className="btn btn-warning btn-sm">
                         Registrarse
