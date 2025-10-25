@@ -13,9 +13,17 @@ const LoginPage = () => {
     return (
         <main className="main-content d-flex align-items-center justify-content-center">
             <div className="container" style={{ maxWidth: '500px' }}>
+                <div className="text-center mb-4">
+                    <img
+                        src="/LoginLogo.png"
+                        alt="Logo Level-Up Gamer"
+                        style={{ width: '450px', height: 'auto' }}
+                    />
+                </div>
                 <div className="card shadow-sm">
+
                     <div className="card-body p-5">
-                        <h2 className="text-center mb-4">Iniciar Sesión</h2>
+                        <h2 className="text-center mb-4">Ingresar</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3">
                                 <label htmlFor="email" className="form-label">Correo Electrónico</label>

@@ -5,7 +5,7 @@
     font-family: sans-serif;
 }
 
-/* src/styles/Style.css */
+
 
 :root {
     --color-fondo-principal: #000000;
@@ -36,7 +36,7 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
 }
 
 .header {
-    /* Posicionamiento y efecto de cristal (esto se queda igual) */
+
     position: sticky;
     top: 0;
     width: 100%;
@@ -46,11 +46,11 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 
-    /* 👇 Añade estas 4 líneas de vuelta 👇 */
+
     display: flex;
-    justify-content: space-between; /* Esto empuja todo a los extremos */
+    justify-content: space-between;
     align-items: center;
-    padding: 0 5%; /* Un margen de 5% a cada lado */
+    padding: 0 30px;
 }
 
 .header-container {
@@ -69,7 +69,7 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
 
 .nav-right {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 20px;
 }
 
@@ -93,8 +93,8 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
 
 .header .nav-links li {
     display: inline-block;
-    padding: 0 20px;
-    color: #c7d5e0;
+    border-right: 1px solid var(--color-texto-secundario);
+    padding: 0 1.5rem;
 }
 
 .header .nav-links li:hover {
@@ -102,11 +102,21 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
 }
 
 .header .nav-links a {
-    list-style: none;
+    font-family: var(--fuente-encabezado);
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-texto-secundario);
+    transition: color 0.2s ease-in-out;
 }
 
 .header .nav-links li a:hover {
-    color: #c7d5e0;
+    color: var(--color-acento1);
+}
+
+.header .nav-links li:last-child {
+    border-right: none;
+    padding-right: 0;
 }
 
 .header .btn button {
@@ -131,53 +141,12 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     display: none;
 }
 
-/* SLIDER */
-.slider-frame {
-    width: 100%;
-    margin: auto;
-    overflow: hidden;
-}
-
-.slider-frame ul {
-    display: flex;
-    padding: 0;
-    width: 400%;
-    animation: slide 20s infinite alternate ease-in-out;
-}
-
-.slider-frame li {
-    width: 100%;
-    list-style: none;
-}
-
-.slider-frame img {
-    width: 100%;
-    height: auto;
-}
-
-@keyframes slide {
-    0% { margin-left: 0; }
-    20% { margin-left: 0; }
-    25% { margin-left: -100%; }
-    45% { margin-left: -100%; }
-    50% { margin-left: -200%; }
-    70% { margin-left: -200%; }
-    75% { margin-left: -300%; }
-    100% { margin-left: -300%; }
-}
-
-/* JUEGOS */
 .titulo-juegos {
     text-align: center;
     padding: 20px;
     color: #c7d5e0;
 }
 
-.flex-juegos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
 
 .caja {
     background: var(--color-gris-oscuro); /* #171a21 */
@@ -234,14 +203,14 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     transition: all 0.3s ease 0s;
     width: 100%; /* Ocupa todo el ancho */
 
-    /* Colores oficiales para botones [cite: 71] */
-    background-color: var(--color-acento1); /* Azul Eléctrico */
-    color: var(--color-fondo-principal); /* Texto Negro */
+
+    background-color: var(--color-acento1);
+    color: var(--color-fondo-principal);
     font-family: var(--fuente-encabezado);
 }
 
 .caja .btn-juego button:hover {
-    background-color: var(--color-acento2); /* Verde Neón al pasar el mouse */
+    background-color: var(--color-acento2);
     transform: scale(1.05);
 }
 
@@ -298,6 +267,120 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
 }
 
 
+.card {
+    background-color: var(--color-gris-oscuro);
+    color: var(--color-texto-principal);
+    border: 1px solid var(--color-acento1);
+}
+
+.form-control {
+    background-color: var(--color-fondo-principal); /* Fondo Negro */
+    color: var(--color-texto-principal); /* Texto Blanco */
+    border: 1px solid var(--color-acento1); /* Borde Azul */
+}
+
+.form-control::placeholder {
+    color: var(--color-texto-secundario);
+}
+
+.form-control:focus {
+    background-color: var(--color-fondo-principal);
+    color: var(--color-texto-principal);
+    border-color: var(--color-acento2);
+    box-shadow: 0 0 0 0.25rem rgba(57, 255, 20, 0.25);
+}
+
+.form-check-label {
+    color: var(--color-texto-secundario);
+}
+
+.card .card-text.text-muted {
+    color: #b8b6b4 !important;
+}
+
+
+.section-1 {
+    padding: 60px 0;
+    background-color: #1b2838; /* Fondo principal */
+}
+
+
+.nosotros-container {
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: var(--color-gris-oscuro);
+    border-radius: 8px;
+    color: var(--color-texto-secundario);
+}
+
+.titulo-nosotros {
+    text-align: center;
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-encabezado);
+    margin-bottom: 20px;
+}
+
+.parrafo-nosotros {
+    font-size: 1.1em;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.nosotros-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.mision, .vision {
+    background-color: var(--color-fondo-principal);
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid var(--color-acento1);
+}
+
+.mision h2, .vision h2 {
+    color: var(--color-acento1);
+    font-family: var(--fuente-encabezado);
+    margin-bottom: 15px;
+}
+
+.imagen-nosotros img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+.btn-warning {
+    background-color: var(--color-acento2) !important;
+    color: var(--color-fondo-principal) !important; /* Texto Negro */
+    border-color: var(--color-acento2) !important;
+    font-family: var(--fuente-encabezado);
+    font-weight: bold;
+}
+
+.btn-warning:hover {
+    background-color: #32cd12 !important;
+    border-color: #32cd12 !important;
+    color: var(--color-fondo-principal) !important;
+}
+
+.btn-outline-dark,
+.btn-outline-warning {
+    border-color: var(--color-acento1) !important; /* Azul Eléctrico */
+    color: var(--color-acento1) !important;
+    font-family: var(--fuente-encabezado);
+}
+
+.btn-outline-warning:hover,
+.btn-outline-dark:hover {
+    background-color: var(--color-acento1) !important;
+    color: var(--color-fondo-principal) !important; /* Texto Negro */
+}
 
 
 @media screen and (max-width: 858px) {
@@ -309,18 +392,11 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     }
 
     .header .nav-links {
-        position: fixed;
-        top: 0;
-        right: 0;
-        background: #1b2838;
-        height: 100%;
-        width: 60%;
+        list-style: none;
+        padding: 0;
+        margin: 0;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        transform: translateX(100%);
-        transition: transform 0.5s ease-in-out;
     }
 
     .header .nav-links.active {
@@ -328,94 +404,8 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     }
 
 
-    .card {
-        background-color: var(--color-gris-oscuro);
-        color: var(--color-texto-secundario);
-        border: none;
-    }
-
-    /* Ajustes para el texto dentro de las tarjetas */
-    .card .card-text.text-muted {
-        color: #b8b6b4 !important; /* Usamos !important para sobreescribir Bootstrap */
-    }
-
-    /* Ajustes para la sección hero */
-    .section-1 {
-        padding: 60px 0;
-        background-color: #1b2838; /* Fondo principal */
-    }
-
-    /* --- Estilos Página Nosotros --- */
-    .nosotros-container {
-        width: 80%;
-        margin: 40px auto;
-        padding: 20px;
-        background-color: #171a21; /* Fondo oscuro de tarjeta */
-        border-radius: 8px;
-        color: #c7d5e0;
-    }
-
-    .titulo-nosotros {
-        text-align: center;
-        color: #66c0f4; /* Celeste de acento */
-        margin-bottom: 20px;
-    }
-
-    .parrafo-nosotros {
-        font-size: 1.1em;
-        line-height: 1.6;
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
     .nosotros-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* Dos columnas */
-        gap: 30px;
-        margin-bottom: 30px;
+        grid-template-columns: 1fr;
     }
-
-    .mision, .vision {
-        background-color: #1b2838; /* Fondo principal más oscuro */
-        padding: 20px;
-        border-radius: 5px;
-    }
-
-    .mision h2, .vision h2 {
-        color: #66c0f4;
-        margin-bottom: 15px;
-    }
-
-    .imagen-nosotros img {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-    }
-
-    /* Hacemos que las columnas se apilen en pantallas pequeñas */
-    @media screen and (max-width: 858px) {
-        .nosotros-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    /* Sobreescribir botones de Bootstrap */
-    .btn-warning {
-        background-color: var(--color-acento2) !important; /* Verde Neón */
-        color: var(--color-fondo-principal) !important; /* Texto negro */
-        border: none !important;
-        font-family: var(--fuente-encabezado);
-        font-weight: bold;
-    }
-
-    .btn-outline-dark, .btn-outline-warning {
-        border-color: var(--color-acento1) !important; /* Azul Eléctrico */
-        color: var(--color-acento1) !important;
-        font-family: var(--fuente-encabezado);
-    }
-    .btn-outline-dark:hover, .btn-outline-warning:hover {
-        background-color: var(--color-acento1) !important;
-        color: var(--color-fondo-principal) !important;
-    }
-
 }
+

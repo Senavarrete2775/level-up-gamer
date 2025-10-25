@@ -44,16 +44,15 @@ function MainContent() {
                 </div>
             </section>
 
-            {/* Sección de Juegos Destacados */}
-            <section id="featured" className="py-5 bg-light">
+
+            <section id="featured" className="py-5">
                 <div className="container">
                     <h2 className="text-center mb-5">Juegos Destacados</h2>
                     <div className="row justify-content-center">
 
-                        {/* 2. REEMPLAZAMOS EL HTML REPETITIVO CON .map() */}
                         {gamesData.map(game => (
                             <GameCard
-                                key={game.id} // **IMPORTANTE: key es necesario para listas en React**
+                                key={game.id}
                                 title={game.title}
                                 image={game.image}
                                 description={game.description}

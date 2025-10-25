@@ -19,16 +19,18 @@ const Header = () => {
                 <nav>
                     <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
                         <li><Link to="/">Inicio</Link></li>
-                        <li><a href="#">Juegos</a></li>
                         <li><Link to="/nosotros">Nosotros</Link></li>
                         <li><Link to="/contacto">Contacto</Link></li>
-                        <li><Link to="/productos">Tienda</Link></li>
+                        <li><Link to="/tienda">Tienda</Link></li>
+                        <li><Link to="/login">Login</Link></li>
                     </ul>
                 </nav>
+                <div className="auth-buttons">
+                    <Link to="/registro" className="btn btn-warning btn-sm">
+                        Registrarse
+                    </Link>
+                </div>
 
-                <Link to="/login" className="btn">
-                    <button>Login</button>
-                </Link>
             </div>
 
             <a href="#" className="menu" onClick={handleMenuToggle}>

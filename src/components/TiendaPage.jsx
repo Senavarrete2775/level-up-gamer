@@ -76,6 +76,7 @@ const TiendaPage = () => {
                 <h1 className="text-center mb-5">Nuestra Tienda</h1>
 
                 <div className="row">
+
                     {productsData.map(product => (
                         <div className="col-lg-4 col-md-6 mb-4" key={product.id}>
                             <GameCard
@@ -86,6 +87,8 @@ const TiendaPage = () => {
                             />
                         </div>
                     ))}
+
+
                 </div>
             </div>
         </main>

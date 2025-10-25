@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom'; // 1. Importa Routes y Route
 
-
+import RegistroPage from './components/RegistroPage';
 import TiendaPage from './components/TiendaPage';
 import Contactopage from './components/Contactopage';
 import NosotrosPage from './components/NosotrosPage';
@@ -18,6 +18,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<MainContent />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/registro" element={<RegistroPage />} />
                 <Route path="/nosotros" element={<NosotrosPage />}/>
                 <Route path="/contacto" element={<Contactopage />} />
                 <Route path="/tienda" element={<TiendaPage />} />
