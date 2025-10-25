@@ -1,4 +1,4 @@
-// Reemplaza TODO el contenido de src/components/MainContent.jsx con esto:
+
 
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
