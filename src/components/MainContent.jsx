@@ -1,17 +1,17 @@
+
+
 import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom'; // Para el botón "Learn More"
+import { Link } from 'react-router-dom';
 import GameCard from "./GameCard";
 
-
-
-
+// --- 1. DATOS DE VIDEOS ---
 const videosData = [
     {
         id: 1,
         subtitle: 'Expansión de Cyberpunk 2077',
         title: 'Phantom Liberty',
         videoUrl: 'https://www.youtube.com/embed/8X2kIfS6fbI',
-        thumbnailUrl: 'https://img.youtube.com/vi/8X2kIfS6fbI/mqdefault.jpg'
+        thumbnailUrl: 'https://i.ytimg.com/vi/8X2kIfS6fbI/sddefault.jpg'
     },
     {
         id: 2,
@@ -27,36 +27,35 @@ const videosData = [
         videoUrl: 'https://www.youtube.com/embed/gmA6MrX81z4',
         thumbnailUrl: 'https://img.youtube.com/vi/gmA6MrX81z4/mqdefault.jpg'
     },
-    // Añade más videos aquí si quieres
 ];
 
+// --- 2. DATOS DE JUEGOS DESTACADOS (CON PROPS CORRECTOS) ---
 const gamesData = [
     {
         id: 1,
         title: "Cyberpunk 2077",
         image: "assets/img/cyberpunk.webp",
-        category: "PC / PS5 / Xbox", // Añadido
-        price: "49.99", // Añadido
+        category: "PC / PS5 / Xbox",
+        price: "49.99",
     },
     {
         id: 2,
         title: "Starfield",
         image: "assets/img/starfield.jpg",
-        category: "PC / Xbox", // Añadido
-        price: "69.99", // Añadido
+        category: "PC / Xbox",
+        price: "69.99",
     },
     {
         id: 3,
         title: "Red Dead Redemption 2",
         image: "assets/img/rdr2.jpg",
-        category: "PC / PS4 / Xbox", // Añadido
-        price: "39.99", // Añadido
+        category: "PC / PS4 / Xbox",
+        price: "39.99",
     },
 ];
 
 function MainContent() {
     const [selectedVideo, setSelectedVideo] = useState(videosData[0]);
-
     const carouselRef = useRef(null);
 
     const scrollLeft = () => {
@@ -72,16 +71,13 @@ function MainContent() {
     };
 
     return (
-
         <main className="main-content">
 
-            {/* --- 3. SECCIÓN DE VIDEO PRINCIPAL (reemplaza tu "Bienvenidos") --- */}
+            {/* --- SECCIÓN DE VIDEO --- */}
             <section className="video-hero-section">
-
-                {/* A. El reproductor de video grande */}
                 <div className="video-player-wrapper">
                     <iframe
-                        key={selectedVideo.id} /* La key fuerza a React a recargar el iframe */
+                        key={selectedVideo.id}
                         className="video-player-iframe"
                         src={selectedVideo.videoUrl}
                         title={selectedVideo.title}
@@ -90,8 +86,6 @@ function MainContent() {
                         allowFullScreen
                     ></iframe>
                 </div>
-
-                {/* B. El contenido (título y botón) - Estilo Klei */}
                 <div className="video-hero-content text-center py-4">
                     <h3 className="video-hero-subtitle">{selectedVideo.subtitle.toUpperCase()}</h3>
                     <h1 className="video-hero-title">PLAY {selectedVideo.title.toUpperCase()}</h1>
@@ -101,19 +95,17 @@ function MainContent() {
                 </div>
             </section>
 
-            {/* --- 4. CARRUSEL DE MINIATURAS (reemplaza 'Juegos Destacados') --- */}
+            {/* --- CARRUSEL DE MINIATURAS --- */}
             <section className="video-carousel-section">
                 <button className="carousel-arrow" onClick={scrollLeft}>
-                    &lt; {/* Símbolo de "menor que" */}
+                    &lt;
                 </button>
                 <div className="video-carousel-container" ref={carouselRef}>
                     {videosData.map(video => (
                         <div
                             key={video.id}
-                            // Aplicamos la clase 'active' si el id coincide con el del video seleccionado
                             className={`video-thumbnail ${video.id === selectedVideo.id ? 'active' : ''}`}
                             style={{ backgroundImage: `url(${video.thumbnailUrl})` }}
-                            // Al hacer clic, actualizamos el estado al video clickeado
                             onClick={() => setSelectedVideo(video)}
                         />
                     ))}
@@ -123,27 +115,30 @@ function MainContent() {
                 </button>
             </section>
 
-            <section id="featured" className="py-5">
-                <div className="container">
-                    <h2 className="text-center mb-5">Juegos Destacados</h2>
-                    <div className="row justify-content-center">
-                        {gamesData.map(game => (
-                            <div className="col-lg-4 col-md-6 mb-4" key={game.id}>
-                                <GameCard
-                                    key={game.id}
-                                    image={game.image}
-                                    category={game.category}
-                                    title={game.title}
-                                    price={game.price}
-                                />
-                            </div>
-                        ))}
+            {/* --- SECCIÓN JUEGOS DESTACADOS --- */}
 
+                <section id="featured" className="py-5">
+                    <div className="container">
+                        <h2 className="text-center mb-5">Juegos Destacados</h2>
+                        <div className="row justify-content-center">
+
+                            {gamesData.map(game => (
+                                <div className="col-lg-4 col-md-6 mb-4" key={game.id}>
+                                    <GameCard
+                                        key={game.id}
+                                        image={game.image}
+                                        category={game.category}
+                                        title={game.title}
+                                        price={game.price}
+                                    />
+                                </div>
+                            ))}
+
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-
+            {/* --- SECCIÓN DE NOTICIAS --- */}
             <section id="news" className="py-5">
                 <div className="container">
                     <h2 className="text-center mb-5">Últimas Noticias</h2>
@@ -151,7 +146,7 @@ function MainContent() {
                         <div className="col-lg-6 mb-4">
                             <div className="card shadow-sm">
                                 <div className="card-body">
-                                    <h5 className="card-title">Análisis Final Fantasy VII Rebirth</h5>
+                                    <h5 className="card-title">Análisis Final Fantasy VII Rebirth: ¿Es la mejor entrega de la saga?</h5>
                                     <p className="card-text text-muted">29 de febrero de 2024</p>
                                     <p className="card-text">
                                         Siete años y medio después de que se anunciara oficialmente su desarrollo, ya está aquí. Final Fantasy
