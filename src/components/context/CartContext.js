@@ -1,18 +1,24 @@
-
-import React, { createContext, useState, useContext } from 'react';
-
-
+import React, { createContext, useState, useContext, useEffect } from 'react';
 const CartContext = createContext();
-
-
 export const useCart = () => useContext(CartContext);
-
-
 export const CartProvider = ({ children }) => {
-    const [cartItems, setCartItems] = useState([]); // State to hold items
+    const [cartItems, setCartItems] = useState(() => {
+        try {
+
+            const localData = localStorage.getItem('cartItems');
+            return localData ? JSON.parse(localData) : [];
+        } catch (error) {
+            console.error("Error al cargar el carrito desde localStorage", error);
+            return [];
+        }
+    });
 
 
-    const addToCart = (product) => {
+    useEffect(() => {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }, [cartItems]);// State to hold items
+
+    const addItemToCart = (product) => {
         setCartItems(prevItems => {
             const existingItem = prevItems.find(item => item.id === product.id);
             if (existingItem) {
@@ -21,9 +27,7 @@ export const CartProvider = ({ children }) => {
                     item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
                 );
             } else {
-
-                const priceAsNumber = parseFloat(product.price.replace('.', '').replace(',', '.'));
-                return [...prevItems, { ...product, quantity: 1, priceNumber: priceAsNumber }];
+                return [...prevItems, { ...product, quantity: 1, priceNumber: product.price }];
             }
         });
         console.log("Added to cart:", product.title);
@@ -53,7 +57,7 @@ export const CartProvider = ({ children }) => {
 
     const value = {
         cartItems,
-        addToCart,
+        addItemToCart,
         removeFromCart,
         updateQuantity,
         totalItems,

@@ -15,7 +15,7 @@ const LoginPage = () => {
             <div className="container" style={{ maxWidth: '500px' }}>
                 <div className="text-center mb-4">
                     <img
-                        src="/LoginLogo.png"
+                        src="/images/layout/LoginLogo.png"
                         alt="Logo Level-Up Gamer"
                         style={{ width: '450px', height: 'auto' }}
                     />

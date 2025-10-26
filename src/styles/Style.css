@@ -18,13 +18,14 @@
     --color-azul-oscuro: #1b2838;
 }
 
-body, #root {
+html, body, #root {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     background-color: var(--color-fondo-principal);
     color: var(--color-texto-principal);
     font-family: var(--fuente-principal);
+    height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
@@ -183,10 +184,11 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     background-color: #171a21;
     padding: 20px;
     color: #b8b6b4;
+    flex-shrink: 0;
 }
 
 .main-content {
-    flex: 1;
+    flex-grow: 1;
 }
 
 /* --- FORMULARIOS (LOGIN/REGISTRO) --- */
@@ -217,7 +219,11 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     color: var(--color-texto-secundario);
 }
 
-.card .card-text.text-muted {
+.text-muted {
+    color: var(--color-texto-secundario) !important;
+}
+
+.card .card-text {
     color: #b8b6b4 !important;
 }
 
@@ -408,50 +414,152 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     transform: scale(1.1);
 }
 
-/* --- RESPONSIVE --- */
-@media screen and (max-width: 858px) {
-    .nav-right {
-        display: none;
-    }
-    .menu {
-        display: block;
-    }
+.tienda-container {
+    padding: 2rem;
+}
 
-    .header .nav-links {
-        position: fixed;
-        top: 0;
-        right: 0;
-        background: #1b2838;
-        height: 100%;
-        width: 60%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transform: translateX(100%);
-        transition: transform 0.5s ease-in-out;
+.tienda-container h1 {
+    margin-bottom: 2rem;
+}
 
-        border-right: none;
-        padding: 0;
-    }
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.filter-input,
+.filter-select {
+    padding: 0.5rem;
+    border-radius: 5px;
+    flex: 1;
+    min-width: 200px;
+    background-color: var(--color-fondo-principal);
+    color: var(--color-texto-principal);
+    border: 1px solid var(--color-acento1);
+}
+
+.filter-select option {
+    background-color: var(--color-gris-oscuro);
+    color: var(--color-texto-principal);
+    padding: 0.5rem;
+}
+
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.header .menu button {
+    background: none;
+    border: none;
+    color: var(--color-texto-secundario);
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.header .menu button:hover {
+    color: var(--color-acento1);
+}
+
+.cart-link {
+    color: var(--color-texto-secundario);
+    text-decoration: none;
+    position: relative;
+    font-size: 1.6rem;
+    line-height: 1;
+    transition: color 0.2s ease-in-out;
+}
+
+.cart-link:hover {
+    color: var(--color-acento1);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 0.7em;
+}
+
+
+
+@media (max-width: 768px) {
 
     .header .nav-links li {
         border-right: none;
-        padding: 1.5rem;
+        padding: 0.5rem 0;
+        width: 100%;
     }
 
-    .header .nav-links.active {
-        transform: translateX(0);
+    .header .nav-right {
+        display: none;
+
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background-color: #000;
+        padding: 1rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
 
-    .nosotros-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .video-carousel-container {
+    .header .nav-right.active {
         display: flex;
-        gap: 15px;
-        overflow-x: auto;
-        scroll-behavior: smooth; /* <— útil */
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
     }
+
+    .header .nav-right.active .auth-buttons {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+        width: 100%;
+    }
+
+
+    .header .nav-right .nav-links {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        gap: 0;
+    }
+
+    .header .menu {
+        display: block;
+    }
+
+    .header .nav-right.active .cart-link {
+        margin-left: 0 !important;
+    }
+
+}
+
+
+
+
+@media (min-width: 769px) {
+
+    .header .menu {
+        display: none;
+    }
+
+    .header .nav-right {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+
+        position: static;
+        width: auto;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+    }
+
 }

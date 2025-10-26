@@ -28,9 +28,12 @@ const NosotrosPage = () => {
                         </p>
                     </div>
                 </div>
-                <div className="imagen-nosotros">
-
-                    <img src="/logo_completo_bg_negro.png" alt="Equipo de Level UP Gamer" />
+                <div className="text-center">
+                    <img
+                        src="/images/layout/logoNosotros.png"
+                        alt="Logo Level-Up Gamer"
+                        style={{ width: '900px', height: 'auto' }}
+                    />
                 </div>
             </div>
         </main>

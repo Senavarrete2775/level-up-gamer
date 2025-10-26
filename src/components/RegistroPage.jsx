@@ -26,7 +26,7 @@ const RegistroPage = () => {
             <div className="container" style={{ maxWidth: '500px' }}>
                 <div className="text-center mb-4">
                     <img
-                        src="/RegistroLogo.png"
+                        src="/images/layout/RegistroLogo.png"
                         alt="Logo Level-Up Gamer"
                         style={{ width: '450px', height: 'auto' }}
                     />

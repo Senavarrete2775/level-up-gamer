@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useCart } from 'context/CartContext';
+import { useCart } from './context/CartContext';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { totalItems } = useCart();
 
     const handleMenuToggle = (e) => {
         e.preventDefault();
@@ -13,12 +14,13 @@ const Header = () => {
     return (
         <header className="header">
             <a href="/" className="logo">
-                <img src="/logo_letras_gb_negro.png" alt="logo" />
+                <img src="/images/layout/logo_letras_gb_negro.png" alt="logo" />
             </a>
 
-            <div className="nav-right">
+            <div className={`nav-right ${isMenuOpen ? 'active' : ''}`}>
                 <nav>
-                    <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+
+                    <ul className="nav-links">
                         <li><Link to="/">Inicio</Link></li>
                         <li><Link to="/nosotros">Nosotros</Link></li>
                         <li><Link to="/contacto">Contacto</Link></li>
@@ -29,29 +31,26 @@ const Header = () => {
 
                 <div className="auth-buttons d-flex align-items-center">
 
-                    <Link to="/cart" className="me-3" style={{ color: 'var(--color-texto-secundario)', textDecoration: 'none', position: 'relative' }}>
+
+                    <Link to="/registro" className="btn btn-warning btn-sm">
+                        Registrarse
+                    </Link>
+
+                    <Link to="/cart" className="cart-link ms-3">
                         🛒
                         {totalItems > 0 && (
-                            <span
-                                className="badge rounded-pill bg-danger"
-                                style={{ position: 'absolute', top: '-10px', right: '-10px', fontSize: '0.7em' }}
-                            >
+                            <span className="cart-badge badge rounded-pill bg-danger">
                                 {totalItems}
                             </span>
                         )}
                     </Link>
 
-                <div className="auth-buttons">
-                    <Link to="/registro" className="btn btn-warning btn-sm">
-                        Registrarse
-                    </Link>
                 </div>
-
             </div>
 
             <a href="#" className="menu" onClick={handleMenuToggle}>
                 <button>
-                    <img className="menu-abrir" src="/img/menu.svg" alt="menu" />
+                    ☰
                 </button>
             </a>
         </header>

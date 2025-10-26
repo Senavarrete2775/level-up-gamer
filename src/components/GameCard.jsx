@@ -1,24 +1,41 @@
 import React from 'react';
-import { useCart } from 'context/CartContext';
+import { useCart } from './context/CartContext';
+import { toast } from 'react-toastify';
 
-const GameCard = ({ product }) => {
-    const { addToCart } = useCart(); // <-- 2. Get addToCart function
 
-    const { image, category, title, price, id } = product;
+const GameCard = ({ game }) => {
+    const { id, name, price, image, category } = game;// <-- 2. Get addToCart function
+
+    const { addItemToCart } = useCart();
+
+    const formattedPrice = price.toLocaleString('es-CL', {
+        style: 'currency',
+        currency: 'CLP'
+    });
+
+    const handleAddToCart = () => {
+        addItemToCart(game);
+        toast.success(`${name} fue añadido al carrito!`);
+    };
 
     return (
-        <div className="caja">
-            <img src={image} alt={title} />
-            <div className="info">
-                <p className="categoria">{category}</p>
-                <p className="nombre-juego">{title}</p>
-                <p className="precio">${price} CLP</p>
 
-                <div className="btn-juego mt-auto">
-                    <button onClick={() => addToCart(product)}>
-                        Agregar al Carrito
-                    </button>
-                </div>
+        <div className="card" style={{ width: '100%' }}>
+
+
+            <img src={image} className="card-img-top" alt={name} />
+            <div className="card-body">
+                <h5 className="card-title">{name}</h5>
+                <h6 className="card-subtitle mb-2 text-muted">{category}</h6>
+                <p className="card-text">{formattedPrice}</p>
+
+
+                <button
+                    className="btn btn-warning"
+                    onClick={handleAddToCart}
+                >
+                    Añadir al Carrito 🛒
+                </button>
             </div>
         </div>
     );

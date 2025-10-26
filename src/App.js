@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
 import { Routes, Route } from 'react-router-dom'; // 1. Importa Routes y Route
 
 import RegistroPage from './components/RegistroPage';
@@ -7,9 +8,10 @@ import Contactopage from './components/Contactopage';
 import NosotrosPage from './components/NosotrosPage';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
-import LoginPage from './components/LoginPage'; // 2. Importa la nueva página de Login
+import LoginPage from './components/LoginPage';
 import Footer from './components/Footer';
 import CartPage from './components/CartPage';
+
 
 function App() {
     return (
@@ -26,6 +28,15 @@ function App() {
                 <Route path="/cart" element={<CartPage />} />
             </Routes>
             <Footer />
+            <ToastContainer
+                position="bottom-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                pauseOnHover
+                theme="dark"
+            />
         </>
     );
 }

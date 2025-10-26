@@ -1,92 +1,71 @@
-import React from 'react';
-import GameCard from './GameCard';
+import React, { useState } from 'react';
+import { products } from '../data/products.js';
+import GameCard from '../components/GameCard';
 
-const productsData = [
-    {
-        id: "JM001",
-        title: "Catan",
-        category: "Juegos de Mesa",
-        price: "29.990",
-        description: "Un clásico juego de estrategia donde los jugadores compiten por colonizar y expandirse.",
-        image: "/img/catan.jpg"
-    },
-    {
-        id: "AC001",
-        title: "Controlador Inalámbrico Xbox",
-        category: "Accesorios",
-        price: "59.990",
-        description: "Ofrece una experiencia de juego cómoda con botones mapeables y respuesta táctil.",
-        image: "/img/xbox-control.jpg"
-    },
-    {
-        id: "CO001",
-        title: "PlayStation 5",
-        category: "Consolas",
-        price: "549.990",
-        description: "La consola de última generación de Sony, con gráficos impresionantes.",
-        image: "/img/ps5.jpg"
-    },
-    {
-        id: "CG001",
-        title: "PC Gamer ASUS ROG Strix",
-        category: "Computadores Gamers",
-        price: "1.299.990",
-        description: "Un potente equipo diseñado para los gamers más exigentes.",
-        image: "/img/pc-gamer.jpg"
-    },
-    {
-        id: "SG001",
-        title: "Silla Gamer Secretlab Titan",
-        category: "Sillas Gamers",
-        price: "349.990",
-        description: "Diseñada para el máximo confort, esta silla ofrece un soporte ergonómico.",
-        image: "/img/silla-secretlab.jpg"
-    },
-    {
-        id: "MS001",
-        title: "Mouse Gamer Logitech G502 HERO",
-        category: "Mouse",
-        price: "49.990",
-        description: "Con sensor de alta precisión y botones personalizables.",
-        image: "/img/mouse-g502.jpg"
-    },
-    {
-        id: "MP001",
-        title: "Mousepad Razer Goliathus Chroma",
-        category: "Mousepad",
-        price: "29.990",
-        description: "Ofrece un área de juego amplia con iluminación RGB personalizable.",
-        image: "/img/mousepad-razer.jpg"
-    },
-    {
-        id: "PP001",
-        title: "Polera Gamer 'Level-Up'",
-        category: "Poleras Personalizadas",
-        price: "14.990",
-        description: "Una camiseta cómoda y estilizada, personalizable con tu gamer tag.",
-        image: "/img/polera-levelup.jpg"
-    }
-];
+const Tienda = () => {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('');
 
-const TiendaPage = () => {
+    const categories = ['Todos', ...new Set(products.map(product => product.category))];
+
+
+    const filteredProducts = products
+        .filter(product => {
+
+            return product.name.toLowerCase().includes(searchTerm.toLowerCase());
+        })
+        .filter(product => {
+
+            if (selectedCategory === '' || selectedCategory === 'Todos') {
+                return true;
+            }
+            return product.category === selectedCategory;
+        });
+
     return (
         <main className="main-content">
-            <div className="container py-5">
-                <h1 className="text-center mb-5">Nuestra Tienda</h1>
 
-                <div className="row">
+            <div className="tienda-container">
+                <h1>Tienda</h1>
 
-                    {productsData.map(product => (
-                        <div className="col-lg-4 col-md-6 mb-4" key={product.id}>
-                            <GameCard product={product} />
-                        </div>
-                    ))}
+                <div className="filter-container">
 
+                    <input
+                        type="text"
+                        placeholder="Buscar por nombre..."
+                        className="filter-input" // Asigna una clase para tu CSS
+                        onChange={e => setSearchTerm(e.target.value)}
+                    />
 
+                    <select
+                        className="filter-select" // Asigna una clase para tu CSS
+                        onChange={e => setSelectedCategory(e.target.value)}
+                        value={selectedCategory}
+                    >
+                        {categories.map(category => (
+                            <option key={category} value={category}>
+                                {category}
+                            </option>
+                        ))}
+                    </select>
                 </div>
+
+
+                <div className="productos-grid">
+                    {filteredProducts.map(product => (
+                        <GameCard key={product.id} game={product} />
+                    ))}
+                </div>
+
+
+                {filteredProducts.length === 0 && (
+                    <p className="no-results-message">
+                        No se encontraron productos con esos filtros.
+                    </p>
+                )}
             </div>
         </main>
     );
 };
 
-export default TiendaPage;
+export default Tienda;

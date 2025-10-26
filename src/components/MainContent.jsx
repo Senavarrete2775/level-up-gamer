@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import GameCard from "./GameCard";
+import {products} from "../data/products";
 
 const videosData = [
     {
@@ -37,65 +38,6 @@ const videosData = [
         title: 'Death Stranding 2: On the Beach',
         videoUrl: 'https://www.youtube.com/embed/etOOO9Sq7u8',
         thumbnailUrl: 'https://img.youtube.com/vi/etOOO9Sq7u8/mqdefault.jpg'
-    },
-];
-
-const productsData = [
-    {
-        id: 1,
-        title: "Cyberpunk 2077",
-        image: "assets/img/cyberpunk.webp",
-        category: "PC / PS5 / Xbox",
-        price: "49.99",
-    },
-    {
-        id: 2,
-        title: "Starfield",
-        image: "assets/img/starfield.jpg",
-        category: "PC / Xbox",
-        price: "69.99",
-    },
-    {
-        id: 3,
-        title: "Red Dead Redemption 2",
-        image: "assets/img/rdr2.jpg",
-        category: "PC / PS4 / Xbox",
-        price: "39.99",
-    },
-    {
-        id: 4,
-        title: "Cyberpunk 2077",
-        image: "assets/img/cyberpunk.webp",
-        category: "PC / PS5 / Xbox",
-        price: "49.99",
-    },
-    {
-        id: 5,
-        title: "Starfield",
-        image: "assets/img/starfield.jpg",
-        category: "PC / Xbox",
-        price: "69.99",
-    },
-    {
-        id: 6,
-        title: "Red Dead Redemption 2",
-        image: "assets/img/rdr2.jpg",
-        category: "PC / PS4 / Xbox",
-        price: "39.99",
-    },
-    {
-        id: 7,
-        title: "Cyberpunk 2077",
-        image: "assets/img/cyberpunk.webp",
-        category: "PC / PS5 / Xbox",
-        price: "49.99",
-    },
-    {
-        id: 8,
-        title: "Starfield",
-        image: "assets/img/starfield.jpg",
-        category: "PC / Xbox",
-        price: "69.99",
     },
 ];
 
@@ -184,16 +126,19 @@ function MainContent() {
                 </button>
             </section>
 
-            {/* --- productos destacados --- */}
             <section id="featured" className="py-5">
                 <div className="container">
                     <h2 className="text-center mb-5">Artículos destacados</h2>
                     <div className="row justify-content-center">
-                        {productsData.map(game => (
-                            <div className="col-lg-4 col-md-6 mb-4" key={game.id}>
-                                <GameCard product={game} />
+
+
+                        {products.slice(0, 4).map(product => (
+                            <div className="col-lg-4 col-md-6 mb-4" key={product.id}>
+
+                                <GameCard game={product} />
                             </div>
                         ))}
+
                     </div>
                 </div>
             </section>
