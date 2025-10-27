@@ -1,4 +1,4 @@
-
+/* --- 1. ESTILOS GLOBALES Y BASE --- */
 * {
     margin: 0;
     padding: 0;
@@ -25,13 +25,14 @@ html, body, #root {
     background-color: var(--color-fondo-principal);
     color: var(--color-texto-principal);
     font-family: var(--fuente-principal);
-    height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     font-family: var(--fuente-encabezado);
     color: var(--color-texto-principal);
 }
+
+
 
 /* --- HEADER --- */
 .header {
@@ -49,12 +50,6 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     padding: 0 30px;
 }
 
-.nav-right {
-    display: flex;
-    align-items: baseline;
-    gap: 20px;
-}
-
 .header .logo {
     cursor: pointer;
 }
@@ -69,7 +64,13 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     transform: scale(1.2);
 }
 
-/* --- ESTILOS DE NAVEGACIÓN (HEADER) --- */
+
+.nav-right {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+}
+
 .header .nav-links {
     list-style: none;
     padding: 0;
@@ -82,6 +83,7 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     display: inline-block;
     border-right: 1px solid var(--color-texto-secundario);
     padding: 0 1.5rem;
+    transition: transform 0.2s ease-in-out; /* Movido hover aquí */
 }
 
 .header .nav-links li:hover {
@@ -106,78 +108,48 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     padding-right: 0;
 }
 
-/* --- MENÚ MÓVIL (HAMBURGUESA) --- */
+
+.cart-link {
+    color: var(--color-texto-secundario);
+    text-decoration: none;
+    position: relative;
+    font-size: 1.6rem;
+    line-height: 1;
+    transition: color 0.2s ease-in-out;
+}
+
+.cart-link:hover {
+    color: var(--color-acento1);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 0.7em;
+}
+
+
 .menu {
     display: none;
 }
-
-/* --- GAME CARD (COMPONENTE .caja) --- */
-.caja {
-    background: var(--color-gris-oscuro);
-    color: var(--color-texto-secundario);
-    border-radius: 8px;
-    margin: 0; /* Quitamos margen para que se alinee con Bootstrap */
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.caja img {
-    width: 100%;
-    height: 225px;
-    object-fit: cover;
-    border-radius: 8px 8px 0 0;
-}
-
-.caja .info {
-    padding: 20px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.caja .categoria {
-    font-size: 14px;
-    color: var(--color-texto-secundario);
-    font-family: var(--fuente-principal);
-}
-
-.caja .nombre-juego {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 10px 0;
-    font-family: var(--fuente-encabezado);
-    color: var(--color-texto-principal);
-    flex: 1;
-}
-
-.caja .precio {
-    font-size: 16px;
-    color: var(--color-acento2);
-    font-weight: bold;
-}
-
-.caja .btn-juego {
-    margin-top: auto;
-    padding-top: 20px;
-}
-
-.caja .btn-juego button {
-    font-weight: 700;
-    padding: 9px 25px;
+.header .menu button {
+    background: none;
     border: none;
-    border-radius: 50px;
+    color: var(--color-texto-secundario);
+    font-size: 2.5rem;
     cursor: pointer;
-    transition: all 0.3s ease 0s;
-    width: 100%;
-    background-color: var(--color-acento1);
-    color: var(--color-fondo-principal);
-    font-family: var(--fuente-encabezado);
+    padding: 0;
+    line-height: 1;
 }
 
-.caja .btn-juego button:hover {
-    background-color: var(--color-acento2);
-    transform: scale(1.05);
+.header .menu button:hover {
+    color: var(--color-acento1);
+}
+
+/* --- MAIN CONTENT --- */
+.main-content {
+    flex-grow: 1;
 }
 
 /* --- FOOTER --- */
@@ -185,103 +157,122 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #171a21;
+    background-color: var(--color-gris-oscuro);
     padding: 20px;
     color: #b8b6b4;
     flex-shrink: 0;
 }
 
-.main-content {
-    flex-grow: 1;
-}
 
-/* --- FORMULARIOS (LOGIN/REGISTRO) --- */
+/* --- 3. COMPONENTES REUTILIZABLES --- */
+
+
 .card {
     background-color: var(--color-gris-oscuro);
     color: var(--color-texto-principal);
     border: 1px solid var(--color-acento1);
+    height: 100%; /* Para alineación vertical */
+    display: flex;
+    flex-direction: column;
 }
 
-.form-control {
-    background-color: var(--color-fondo-principal);
+.card .card-img-top {
+    width: 100%;
+    height: 225px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.card .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.card .card-title {
+    flex-grow: 1;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    font-family: var(--fuente-encabezado);
     color: var(--color-texto-principal);
-    border: 1px solid var(--color-acento1);
 }
 
-.form-control::placeholder {
-    color: var(--color-texto-secundario);
-}
-
-.form-control:focus {
-    background-color: var(--color-fondo-principal);
-    color: var(--color-texto-principal);
-    border-color: var(--color-acento2);
-    box-shadow: 0 0 0 0.25rem rgba(57, 255, 20, 0.25);
-}
-
-.form-check-label {
-    color: var(--color-texto-secundario);
-}
-
-.text-muted {
+.card .card-subtitle {
+    font-size: 14px;
     color: var(--color-texto-secundario) !important;
+    font-family: var(--fuente-principal);
+    margin-bottom: 10px;
 }
 
 .card .card-text {
     color: #b8b6b4 !important;
 }
 
-/* --- PÁGINA "NOSOTROS" --- */
-.nosotros-container {
-    width: 80%;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: var(--color-gris-oscuro);
-    border-radius: 8px;
-    color: var(--color-texto-secundario);
+.card .card-text:not(.text-muted) {
+    flex-grow: 1;
 }
 
-.titulo-nosotros {
-    text-align: center;
-    color: var(--color-texto-principal);
-    font-family: var(--fuente-encabezado);
-    margin-bottom: 20px;
+
+.productos-grid .card .card-text,
+#featured .card .card-text {
+    font-size: 16px;
+    color: var(--color-acento2) !important;
+    font-weight: bold;
 }
 
-.parrafo-nosotros {
-    font-size: 1.1em;
-    line-height: 1.6;
-    text-align: center;
-    margin-bottom: 30px;
+
+.card .btn {
+    margin-top: auto;
 }
 
-.nosotros-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-bottom: 30px;
+.card .btn-warning {
+    font-weight: 700;
+    padding: 9px 25px;
+    border: none;
+    border-radius: 50px !important;
+    width: 100%;
 }
 
-.mision, .vision {
-    background-color: var(--color-fondo-principal);
-    padding: 20px;
+
+/* --- FORMULARIOS (Login/Registro/Filtros) --- */
+.form-control,
+.filter-input,
+.filter-select {
+    padding: 0.5rem;
     border-radius: 5px;
+    background-color: var(--color-fondo-principal);
+    color: var(--color-texto-principal);
     border: 1px solid var(--color-acento1);
 }
 
-.mision h2, .vision h2 {
-    color: var(--color-acento1);
-    font-family: var(--fuente-encabezado);
-    margin-bottom: 15px;
+.form-control::placeholder,
+.filter-input::placeholder {
+    color: var(--color-texto-secundario);
 }
 
-.imagen-nosotros img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
+.form-control:focus,
+.filter-input:focus,
+.filter-select:focus {
+    background-color: var(--color-fondo-principal);
+    color: var(--color-texto-principal);
+    border-color: var(--color-acento2);
+    box-shadow: 0 0 0 0.25rem rgba(57, 255, 20, 0.25);
+    outline: none; /* Quita el borde azul por defecto */
 }
 
-/* --- BOTONES (BOOTSTRAP OVERRIDE) --- */
+.form-check-label {
+    color: var(--color-texto-secundario);
+}
+
+.filter-select option {
+    background-color: var(--color-gris-oscuro);
+    color: var(--color-texto-principal);
+    padding: 0.5rem;
+}
+
+/* --- BOTONES GENERALES (Overrides de Bootstrap) --- */
 .btn-warning {
     background-color: var(--color-acento2) !important;
     color: var(--color-fondo-principal) !important;
@@ -309,7 +300,17 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     color: var(--color-fondo-principal) !important;
 }
 
-/* --- VIDEO HERO (HOMEPAGE) --- */
+/* --- UTILIDADES --- */
+.text-muted {
+    color: var(--color-texto-secundario) !important;
+}
+
+
+
+
+/* --- PÁGINA PRINCIPAL */
+
+
 .video-hero-section {
     width: 100%;
     background-color: #111;
@@ -317,7 +318,7 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
 
 .video-player-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     width: 100%;
@@ -333,7 +334,7 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
 
 .video-hero-content {
     background-color: var(--color-fondo-principal);
-    padding: 20px 0; /* Añadido padding */
+    padding: 20px 0;
 }
 
 .video-hero-subtitle {
@@ -350,7 +351,7 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     font-weight: bold;
 }
 
-/* --- VIDEO CAROUSEL --- */
+
 .video-carousel-section {
     background-color: var(--color-fondo-principal);
     padding-bottom: 40px;
@@ -418,6 +419,23 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     transform: scale(1.1);
 }
 
+
+#featured .col-lg-4,
+#featured .col-md-6 {
+    display: flex;
+    align-items: stretch;
+}
+
+
+
+#news .col-lg-6 {
+    display: flex;
+    align-items: stretch;
+}
+
+
+
+/* --- PÁGINA TIENDA --- */
 .tienda-container {
     padding: 2rem;
 }
@@ -425,6 +443,7 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
 .tienda-container h1 {
     margin-bottom: 2rem;
 }
+
 
 .filter-container {
     display: flex;
@@ -436,20 +455,10 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
 
 .filter-input,
 .filter-select {
-    padding: 0.5rem;
-    border-radius: 5px;
     flex: 1;
     min-width: 200px;
-    background-color: var(--color-fondo-principal);
-    color: var(--color-texto-principal);
-    border: 1px solid var(--color-acento1);
 }
 
-.filter-select option {
-    background-color: var(--color-gris-oscuro);
-    color: var(--color-texto-principal);
-    padding: 0.5rem;
-}
 
 .productos-grid {
     display: grid;
@@ -457,48 +466,20 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     gap: 2rem;
 }
 
-.header .menu button {
-    background: none;
-    border: none;
-    color: var(--color-texto-secundario);
-    font-size: 2.5rem;
-    cursor: pointer;
-    padding: 0;
-    line-height: 1;
-}
 
-.header .menu button:hover {
-    color: var(--color-acento1);
-}
-
-.cart-link {
-    color: var(--color-texto-secundario);
-    text-decoration: none;
-    position: relative;
-    font-size: 1.6rem;
-    line-height: 1;
-    transition: color 0.2s ease-in-out;
-}
-
-.cart-link:hover {
-    color: var(--color-acento1);
-}
-
-.cart-badge {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    font-size: 0.7em;
-}
 
 
 .promo-slider-container {
     width: 100%;
-    height: 500px;
+    height: 300px;
     margin-bottom: 2rem;
     border-radius: 8px;
     overflow: hidden;
     background-color: var(--color-gris-oscuro);
+}
+
+.promo-slider-container .swiper {
+    height: 100%;
 }
 
 .promo-slide {
@@ -536,6 +517,8 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     font-size: 2.5rem;
     margin: 0.5rem 0 1rem 0;
 }
+
+
 .swiper-button-next,
 .swiper-button-prev {
     color: var(--color-acento2) !important;
@@ -545,13 +528,145 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     background: var(--color-acento2) !important;
 }
 
-.promo-slider-container .swiper {
-    height: 100%;
+
+/* --- PÁGINA "NOSOTROS" --- */
+.nosotros-container {
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: var(--color-gris-oscuro);
+    border-radius: 8px;
+    color: var(--color-texto-secundario);
+}
+
+.nosotros-container .titulo-nosotros {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.parrafo-nosotros {
+    font-size: 1.1em;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.nosotros-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.mision, .vision {
+    background-color: var(--color-fondo-principal);
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid var(--color-acento1);
+}
+
+.mision h2, .vision h2 {
+    color: var(--color-acento1);
+    font-family: var(--fuente-encabezado);
+    margin-bottom: 15px;
+}
+
+.imagen-nosotros img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+/* --- PÁGINA "contacto" --- */
+
+.contact-container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.contact-container h1 {
+
+}
+
+.contact-container p.text-muted {
+
 }
 
 
+.contact-container .card {
+    background-color: var(--color-gris-oscuro);
+    color: var(--color-texto-principal);
+    border: 1px solid var(--color-acento1);
+    width: 100%;
+    display: block;
+    height: auto;
+
+}
+
+.contact-container .card-body {
+    display: block;
+    flex-grow: 0;
+    padding: 2rem;
+}
+
+
+.contact-container .form-label {
+    color: var(--color-texto-secundario);
+    margin-bottom: 0.5rem;
+}
+
+
+.contact-container .form-control {
+
+    margin-bottom: 1rem;
+}
+
+.contact-container textarea.form-control {
+    min-height: 150px;
+}
+
+
+.contact-container .btn-warning {
+
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.25rem;
+}
+
+/* --- 5. ESTILOS RESPONSIVE (Media Queries) --- */
 
 @media (max-width: 768px) {
+
+
+    .header .nav-right {
+        display: none;
+        position: absolute;
+        top: 85px;
+        right: 0;
+        width: 100%;
+        background-color: rgba(23, 26, 33, 0.95);
+        padding: 1.5rem 1rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-top: 1px solid var(--color-gris-oscuro);
+    }
+
+    .header .nav-right.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .header .nav-right .nav-links {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        gap: 1rem;
+    }
 
     .header .nav-links li {
         border-right: none;
@@ -559,53 +674,45 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
         width: 100%;
     }
 
-    .header .nav-right {
-        display: none;
-
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 100%;
-        background-color: #000;
-        padding: 1rem;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    }
-
-    .header .nav-right.active {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-
     .header .nav-right.active .auth-buttons {
         flex-direction: column;
         gap: 1.5rem;
         align-items: center;
         width: 100%;
-    }
-
-
-    .header .nav-right .nav-links {
-        flex-direction: column;
-        text-align: center;
-        width: 100%;
-        gap: 0;
-    }
-
-    .header .menu {
-        display: block;
+        padding-top: 1rem;
+        border-top: 1px solid var(--color-gris-oscuro);
     }
 
     .header .nav-right.active .cart-link {
         margin-left: 0 !important;
     }
 
+    .header .menu {
+        display: block;
+    }
+
+
+    .nosotros-grid {
+        grid-template-columns: 1fr;
+    }
+    .nosotros-container {
+        width: 90%;
+    }
+
+
+    .promo-slide-content {
+        max-width: 80%;
+        left: 10%;
+        text-align: center;
+    }
+    .promo-slide-content h2 {
+        font-size: 2rem;
+    }
+
 }
 
 
-
-
+/* --- Estilos específicos para Desktop (Opcional, si hay que revertir algo de móvil) --- */
 @media (min-width: 769px) {
 
     .header .menu {
@@ -613,69 +720,24 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     }
 
     .header .nav-right {
+
         display: flex;
         flex-direction: row;
         align-items: baseline;
-
         position: static;
         width: auto;
         background-color: transparent;
         box-shadow: none;
         padding: 0;
+        border-top: none;
     }
-
-}
-
-.productos-grid .card {
-    height: 100%;
-}
-
-.productos-grid .card .card-img-top {
-    width: 100%;
-    height: 225px;
-    object-fit: cover;
-    border-radius: 8px 8px 0 0;
-}
-
-.productos-grid .card .card-body {
-    flex-grow: 1; /* ¡Importante! */
-    display: flex;
-    flex-direction: column;
-
-    background: var(--color-gris-oscuro);
-    padding: 20px;
-}
-
-.productos-grid .card .card-title {
-    flex-grow: 1;
-
-    font-size: 18px;
-    font-weight: bold;
-    margin: 10px 0;
-    font-family: var(--fuente-encabezado);
-    color: var(--color-texto-principal);
-}
-
-
-.productos-grid .card .card-subtitle {
-    font-size: 14px;
-    color: var(--color-texto-secundario) !important;
-    font-family: var(--fuente-principal);
-    margin-bottom: 10px;
-}
-
-
-.productos-grid .card .card-text {
-    font-size: 16px;
-    color: var(--color-acento2) !important;
-    font-weight: bold;
-}
-
-.productos-grid .card .btn-warning {
-    margin-top: auto;
-    font-weight: 700;
-    padding: 9px 25px;
-    border: none;
-    border-radius: 50px !important;
-    width: 100%;
+    .header .nav-links li {
+        border-right: 1px solid var(--color-texto-secundario);
+        padding: 0 1.5rem;
+        width: auto;
+    }
+    .header .nav-links li:last-child {
+        border-right: none;
+        padding-right: 0;
+    }
 }

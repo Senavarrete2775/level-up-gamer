@@ -19,30 +19,36 @@ const Contactopage = () => {
     };
 
     return (
-
         <main className="main-content">
-            <div className="container py-5" style={{ maxWidth: '800px' }}>
-                <div className="row justify-content-center">
-                    <div className="col-lg-10">
-                        <div className="text-center mb-4">
-                            <img
-                                src="/images/layout/ContactoLogo.png"
-                                alt="Logo Level-Up Gamer"
-                                style={{ width: '450px', height: 'auto' }}
-                            />
-                        </div>
 
+            <div className="container py-5 contact-container">
+                <div className="row justify-content-center">
+
+
+                    <div className="col-12 text-center mb-4">
+                        <img
+                            src="/images/layout/ContactoLogo.png"
+                            alt="Logo Level-Up Gamer Contacto"
+                            style={{ width: '350px', height: 'auto' }}
+                        />
+                    </div>
+
+
+                    <div className="col-lg-8 col-md-10">
+                        <h1 className="text-center mb-4">Contáctanos</h1>
+
+
+                        <p className="text-center text-muted mb-5">
+                            ¿Tienes alguna duda, sugerencia o quieres colaborar? Llena el formulario y nos pondremos en contacto contigo.
+                        </p>
 
                         <div className="card shadow-sm">
-                            <div className="card-body p-5">
+                            <div className="card-body p-4 p-md-5">
                                 <form onSubmit={handleSubmit}>
+
+
                                     <div className="mb-3">
-                                        <p className="text-center text-muted mb-5">
-                                            ¿Tienes alguna duda, sugerencia o quieres colaborar? Llena el formulario y nos pondremos en contacto contigo.
-                                        </p>
-
                                         <label htmlFor="nombre" className="form-label">Tu Nombre</label>
-
                                         <input
                                             type="text"
                                             className="form-control"
