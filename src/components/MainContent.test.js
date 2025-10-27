@@ -10,7 +10,6 @@ describe('MainContent Integration (con Jasmine/Karma)', () => {
     const mockAddItemToCart = jasmine.createSpy('addItemToCart');
 
     beforeEach(() => {
-        // Mockeamos el hook (igual que antes)
         spyOn(CartContext, 'useCart').and.returnValue({
             addItemToCart: mockAddItemToCart
         });
