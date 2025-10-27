@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { products } from '../data/products.js';
 import GameCard from '../components/GameCard';
+import PromoSlider from '../components/PromoSlider';
 
 const Tienda = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -24,10 +25,8 @@ const Tienda = () => {
 
     return (
         <main className="main-content">
-
             <div className="tienda-container">
-                <h1>Tienda</h1>
-
+                <PromoSlider />
                 <div className="filter-container">
 
                     <input

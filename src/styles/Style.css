@@ -488,6 +488,64 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
 }
 
 
+.promo-slider-container {
+    width: 100%;
+    height: 500px;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--color-gris-oscuro);
+}
+
+.promo-slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
+
+.promo-slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5);
+}
+
+.promo-slide-content {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    padding: 2rem;
+    z-index: 10;
+    max-width: 50%;
+}
+
+.promo-slide-content h3 {
+    font-family: var(--fuente-principal);
+    color: var(--color-acento1);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.promo-slide-content h2 {
+    font-family: var(--fuente-encabezado);
+    font-size: 2.5rem;
+    margin: 0.5rem 0 1rem 0;
+}
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--color-acento2) !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--color-acento2) !important;
+}
+
+.promo-slider-container .swiper {
+    height: 100%;
+}
+
+
 
 @media (max-width: 768px) {
 
