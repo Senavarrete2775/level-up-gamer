@@ -28,7 +28,6 @@ describe('GameCard Component (con Jasmine/Karma)', () => {
             addItemToCart: mockAddItemToCart
         });
 
-        // Limpiamos el historial de la espía
         mockAddItemToCart.calls.reset();
     });
 
@@ -39,7 +38,7 @@ describe('GameCard Component (con Jasmine/Karma)', () => {
 
         expect(screen.getByText('Catan')).not.toBeNull();
         expect(screen.getByText('Juegos de Mesa')).not.toBeNull();
-        expect(screen.getByText('$ 29.990')).not.toBeNull();
+        expect(screen.getByText('$29.990')).not.toBeNull();
     });
 
     it('debe llamar a addItemToCart con el juego correcto al hacer clic', () => {
