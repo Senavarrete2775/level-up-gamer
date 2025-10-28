@@ -1,15 +1,32 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom'; 
+import { MemoryRouter } from 'react-router-dom';
 import Header from './Header';
 import * as CartContext from './context/CartContext';
+import * as AuthContext from './context/AuthContext';
+
 
 describe('Header Component (con Jasmine/Karma)', () => {
 
 
-    it('debe renderizar los links de navegación principales', () => {
+    const mockLogout = jasmine.createSpy('logout');
 
-        spyOn(CartContext, 'useCart').and.returnValue({ totalItems: 0 });
+
+    const setupMocks = (cartItemsCount, loggedInUser) => {
+        spyOn(CartContext, 'useCart').and.returnValue({
+            totalItems: cartItemsCount
+        });
+        spyOn(AuthContext, 'useAuth').and.returnValue({
+            currentUser: loggedInUser, // Pasamos el usuario (o null)
+            logout: mockLogout
+        });
+        mockLogout.calls.reset();
+    };
+
+
+    // --- PRUEBA 7 ---
+    it('debe renderizar los links de navegación principales (usuario no logueado)', () => {
+        setupMocks(0, null);
 
         render(
             <MemoryRouter>
@@ -19,14 +36,17 @@ describe('Header Component (con Jasmine/Karma)', () => {
 
         expect(screen.getByText('Inicio')).not.toBeNull();
         expect(screen.getByText('Tienda')).not.toBeNull();
-        expect(screen.getByText('Login')).not.toBeNull();
-        expect(screen.getByText('Registrarse')).not.toBeNull();
+        expect(screen.getByText('Login')).not.toBeNull(); // Debe estar
+        expect(screen.getByText('Registrarse')).not.toBeNull(); // Debe estar
+
+        expect(screen.queryByText(/Hola,/)).toBeNull();
     });
 
     // --- PRUEBA 8 ---
-    it('debe mostrar el número de items en el badge del carrito', () => {
+    it('debe mostrar el número de items y saludo (usuario logueado)', () => {
 
-        spyOn(CartContext, 'useCart').and.returnValue({ totalItems: 5 });
+        const mockUser = { email: 'test@example.com' };
+        setupMocks(5, mockUser);
 
         render(
             <MemoryRouter>
@@ -34,7 +54,10 @@ describe('Header Component (con Jasmine/Karma)', () => {
             </MemoryRouter>
         );
 
-
         expect(screen.getByText('5')).not.toBeNull();
+        expect(screen.getByText('Hola, test')).not.toBeNull();
+        expect(screen.getByText('Logout')).not.toBeNull();
+        expect(screen.queryByText('Login')).toBeNull();
+        expect(screen.queryByText('Registrarse')).toBeNull();
     });
 });
