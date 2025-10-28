@@ -1,8 +1,9 @@
 import React from 'react';
 
+import TestimonialsSection from '../components/TestimonialsSection';
+
 const NosotrosPage = () => {
     return (
-
         <main className="main-content">
             <div className="nosotros-container">
                 <h1 className="titulo-nosotros">Sobre Level UP Gamer</h1>
@@ -10,6 +11,7 @@ const NosotrosPage = () => {
                     Bienvenidos a Level UP Gamer, tu destino definitivo para todo lo relacionado con el mundo de los videojuegos.
                     Nacimos de la pasión por los mundos virtuales, las historias épicas y la adrenalina de la competición.
                 </p>
+
                 <div className="nosotros-grid">
                     <div className="mision">
                         <h2>Nuestra Misión</h2>
@@ -28,6 +30,7 @@ const NosotrosPage = () => {
                         </p>
                     </div>
                 </div>
+
                 <div className="text-center">
                     <img
                         src="/images/layout/logoNosotros.png"
@@ -35,6 +38,9 @@ const NosotrosPage = () => {
                         style={{ width: '900px', height: 'auto' }}
                     />
                 </div>
+                <section id="clientes" style={{ marginTop: '2.5rem' }}>
+                    <TestimonialsSection />
+                </section>
             </div>
         </main>
     );

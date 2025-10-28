@@ -865,3 +865,83 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
         padding-right: 0;
     }
  }
+.testimonials {
+    padding: clamp(2rem, 4vw, 3rem) 1rem;
+}
+
+.testimonials .container-narrow {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.testimonials h2 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    text-align: center;
+    margin: 0 0 .25rem 0;
+}
+
+.testimonials .subtitle {
+    text-align: center;
+    color: var(--muted, #5f6b7a);
+    margin-bottom: 2rem;
+}
+
+.testimonials .grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+    .testimonials .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width: 1024px) {
+    .testimonials .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.testimonial-card {
+    border: 1px solid var(--line, #e6e9ee);
+    border-radius: 14px;
+    padding: 1.25rem 1.35rem;
+    background: var(--card, #fff);
+    box-shadow: 0 4px 14px rgba(0,0,0,.06);
+}
+
+:root[data-theme="dark"] .testimonial-card,
+.dark .testimonial-card {
+    background: #0f0f11;
+    border-color: #1f1f23;
+    box-shadow: 0 10px 24px rgba(0,0,0,.35);
+}
+
+.testimonial-card .stars {
+    display: flex; gap: .25rem; margin-bottom: .75rem;
+}
+
+.testimonial-card .quote {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0 0 1rem 0;
+    color: var(--text, #1b1f23);
+}
+
+:root[data-theme="dark"] .testimonial-card .quote,
+.dark .testimonial-card .quote {
+    color: #e9e9ee;
+}
+
+.testimonial-card .author {
+    font-weight: 700;
+    margin: 0 0 .75rem 0;
+    text-align: center;
+}
+
+.testimonial-card .verified {
+    display: inline-flex; align-items: center; gap: .5rem;
+    color: #2f6af6;
+    font-weight: 600;
+}
