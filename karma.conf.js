@@ -1,5 +1,4 @@
 const webpackConfig = {
-
     mode: 'development',
     module: {
         rules: [
@@ -15,7 +14,6 @@ const webpackConfig = {
                 }
             },
             {
-
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
             }
@@ -33,10 +31,22 @@ module.exports = function(config) {
             'src/**/*.test.js'
         ],
         preprocessors: {
-            'src/**/*.test.js': ['webpack']
+            'src/**/*.test.js': ['webpack'],
+
+            'src/**/!(*.test).js': ['webpack', 'coverage'],
+            'src/**/!(*.test).jsx': ['webpack', 'coverage']
         },
         webpack: webpackConfig,
-        reporters: ['progress'],
+
+
+        reporters: ['progress', 'coverage'],
+
+
+        coverageReporter: {
+            type : 'html',
+            dir : 'coverage/'
+        },
+
         browsers: ['Chrome'],
         singleRun: false,
         client: {

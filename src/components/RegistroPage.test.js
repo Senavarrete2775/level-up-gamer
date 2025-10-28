@@ -1,12 +1,11 @@
 
-
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import RegistroPage from './RegistroPage';
 
 
-import * as AuthContext from '../components/context/AuthContext'; // Ajusta la ruta si es necesario
+import * as AuthContext from '../components/context/AuthContext';
 
 describe('RegistroPage (con Jasmine/Karma)', () => {
 
@@ -16,7 +15,7 @@ describe('RegistroPage (con Jasmine/Karma)', () => {
 
         spyOn(AuthContext, 'useAuth').and.returnValue({
             register: mockRegister,
-            currentUser: null // Puedes añadir currentUser si el componente lo necesita
+            currentUser: null
         });
         mockRegister.calls.reset();
     });

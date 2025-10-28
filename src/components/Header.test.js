@@ -17,14 +17,14 @@ describe('Header Component (con Jasmine/Karma)', () => {
             totalItems: cartItemsCount
         });
         spyOn(AuthContext, 'useAuth').and.returnValue({
-            currentUser: loggedInUser, // Pasamos el usuario (o null)
+            currentUser: loggedInUser,
             logout: mockLogout
         });
         mockLogout.calls.reset();
     };
 
 
-    // --- PRUEBA 7 ---
+
     it('debe renderizar los links de navegación principales (usuario no logueado)', () => {
         setupMocks(0, null);
 
@@ -42,7 +42,7 @@ describe('Header Component (con Jasmine/Karma)', () => {
         expect(screen.queryByText(/Hola,/)).toBeNull();
     });
 
-    // --- PRUEBA 8 ---
+
     it('debe mostrar el número de items y saludo (usuario logueado)', () => {
 
         const mockUser = { email: 'test@example.com' };

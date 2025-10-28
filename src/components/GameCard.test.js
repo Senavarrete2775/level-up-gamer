@@ -1,11 +1,9 @@
-
-
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 import GameCard from './GameCard';
-import * as CartContext from './context/CartContext'; // Ajusta ruta
+import * as CartContext from './context/CartContext';
 
 let mockGame = { };
 mockGame = {
