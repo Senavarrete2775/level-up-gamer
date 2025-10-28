@@ -11,6 +11,7 @@ import MainContent from './components/MainContent';
 import LoginPage from './components/LoginPage';
 import Footer from './components/Footer';
 import CartPage from './components/CartPage';
+import ProductDetailPage from './components/ProductDetailPage';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/tienda" element={<TiendaPage />} />
                 <Route path="/tienda" element={<TiendaPage />} />
                 <Route path="/cart" element={<CartPage />} />
+                <Route path="/producto/:productId" element={<ProductDetailPage />} />
             </Routes>
             <Footer />
             <ToastContainer

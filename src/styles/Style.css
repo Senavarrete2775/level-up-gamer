@@ -424,6 +424,93 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
 #featured .col-md-6 {
     display: flex;
     align-items: stretch;
+    padding-bottom: 1.5rem;
+}
+
+#featured .card-link-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-acento1);
+}
+
+
+#featured .card-link-wrapper .card {
+    height: 100%;
+    border: none;
+    box-shadow: none;
+    transition: none;
+    background-color: var(--color-gris-oscuro);
+}
+
+#featured .card-link-wrapper .card .card-img-top {
+    width: 100%;
+    height: 225px;
+    object-fit: cover;
+}
+
+
+#featured .card-link-wrapper .card .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-gris-oscuro);
+    padding: 20px;
+}
+
+#featured .card-link-wrapper .card .card-title {
+    flex-grow: 1;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    font-family: var(--fuente-encabezado);
+    color: var(--color-texto-principal);
+}
+
+#featured .card-link-wrapper .card .card-subtitle {
+    font-size: 14px;
+    color: var(--color-texto-secundario) !important;
+    font-family: var(--fuente-principal);
+    margin-bottom: 10px;
+}
+
+#featured .card-link-wrapper .card .card-text {
+    font-size: 16px;
+    color: var(--color-acento2) !important;
+    font-weight: bold;
+}
+
+#featured .card-link-wrapper .card .btn-warning {
+    margin-top: auto;
+    font-weight: 700;
+    padding: 9px 25px;
+    border: none;
+    border-radius: 50px !important;
+    width: 100%;
+}
+
+#featured .card-link-wrapper:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+#featured .card:hover {
+    transform: none;
+    box-shadow: none;
+    z-index: auto;
+}
+
+#news .col-lg-6 {
+    display: flex;
+    align-items: stretch;
 }
 
 
@@ -526,6 +613,12 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
 
 .swiper-pagination-bullet-active {
     background: var(--color-acento2) !important;
+}
+
+.card-link-wrapper,
+.card-link-wrapper:hover {
+    text-decoration: none;
+    color: inherit;
 }
 
 
@@ -635,6 +728,35 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     padding: 0.75rem 1.25rem;
 }
 
+
+/* --- Efecto Hover para Tarjetas de Producto --- */
+
+.productos-grid .card,
+#featured .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.productos-grid .card:hover,
+#featured .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+
+    background-color: var(--color-gris-oscuro);
+}
+
+
+
+.productos-grid .caja:hover,
+#featured .caja:hover {
+     transform: scale(1.05);
+     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+     z-index: 10;
+     background-color: var(--color-gris-oscuro);
+}
+
 /* --- 5. ESTILOS RESPONSIVE (Media Queries) --- */
 
 @media (max-width: 768px) {
@@ -731,13 +853,15 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
         padding: 0;
         border-top: none;
     }
+
     .header .nav-links li {
         border-right: 1px solid var(--color-texto-secundario);
         padding: 0 1.5rem;
         width: auto;
     }
+
     .header .nav-links li:last-child {
         border-right: none;
         padding-right: 0;
     }
-}
+ }

@@ -1,24 +1,33 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../components/context/AuthContext';
+import { toast } from 'react-toastify';
 
 const RegistroPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isOver18, setIsOver18] = useState(false); // Estado para el checkbox
     const [error, setError] = useState('');
+    const { register } = useAuth();
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => { // Hazla async
         e.preventDefault();
-
-
         if (!isOver18) {
             setError('Debes ser mayor de 18 años para registrarte.');
             return;
         }
-
         setError('');
 
-        alert(`¡Registro exitoso para: ${email}!`);
+        try {
+            await register(email, password);
+            toast.success(`¡Bienvenido ${email}! Registro exitoso.`);
+            navigate('/');
+        } catch (err) {
+
+            toast.error(err.message || 'Error al registrar.');
+            setError(err.message || 'Error al registrar.');
+        }
     };
 
     return (

@@ -32,12 +32,12 @@ const Tienda = () => {
                     <input
                         type="text"
                         placeholder="Buscar por nombre..."
-                        className="filter-input" // Asigna una clase para tu CSS
+                        className="filter-input"
                         onChange={e => setSearchTerm(e.target.value)}
                     />
 
                     <select
-                        className="filter-select" // Asigna una clase para tu CSS
+                        className="filter-select"
                         onChange={e => setSelectedCategory(e.target.value)}
                         value={selectedCategory}
                     >

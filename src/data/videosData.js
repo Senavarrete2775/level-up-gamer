@@ -1,4 +1,3 @@
-// src/data/videosData.js
 export const videosData = [
     {
         id: 1,

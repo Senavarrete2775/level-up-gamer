@@ -1,13 +1,27 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../components/context/AuthContext';
+import { toast } from 'react-toastify';
+
+
+
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { login } = useAuth(); // Obtén la función login
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => { // Hazla async
         e.preventDefault();
-        alert(`Iniciando sesión con Email: ${email} y Contraseña: ${password}`);
+        try {
+            await login(email, password); // Llama a la función login
+            toast.success(`¡Bienvenido de vuelta ${email}!`);
+            navigate('/');
+        } catch (err) {
+            toast.error(err.message || 'Error al iniciar sesión.');
+
+        }
     };
 
     return (
