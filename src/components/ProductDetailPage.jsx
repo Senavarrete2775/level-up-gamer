@@ -4,17 +4,13 @@ import { useParams, Link } from 'react-router-dom';
 import { products } from '../data/products.js';
 import { useCart } from '../components/context/CartContext';
 import { toast } from 'react-toastify';
+import PromoSlider from '../components/PromoSlider';
 
 const ProductDetailPage = () => {
 
     const { productId } = useParams();
-
-
     const product = products.find(p => p.id === productId);
-
-
     const { addItemToCart } = useCart();
-
 
     if (!product) {
         return (
@@ -42,40 +38,44 @@ const ProductDetailPage = () => {
 
     return (
         <main className="main-content">
-            <div className="container py-5">
+            <section className="promo-slider-section 5">
+                <div className="container-fluid">
+                    <PromoSlider />
+                </div>
+            </section>
+            <div className="container py-5 product-detail-container">
                 <div className="row">
-
-                    <div className="col-md-6 mb-4 mb-md-0">
+                    <div className="col-md-6 mb-4 mb-md-0 d-flex justify-content-center">
                         <img
                             src={product.image}
                             alt={product.name}
-                            className="img-fluid rounded shadow-sm" // Clases de Bootstrap
-                            style={{ maxHeight: '500px', objectFit: 'contain' }}
+                            className="product-detail-image"
                         />
                     </div>
-
-                    <div className="col-md-6">
+                    <div className="col-md-6 product-detail-info">
                         <h1 className="mb-3">{product.name}</h1>
                         <h4 className="text-muted mb-3">{product.category}</h4>
-                        <p className="lead mb-4" style={{ color: 'var(--color-texto-secundario)' }}>
+                        <p className="lead mb-4">
                             {product.description || 'Descripción no disponible.'}
                         </p>
-                        <h2 className="mb-4" style={{ color: 'var(--color-acento2)' }}>
+                        <h2 className="mb-4">
                             {formattedPrice}
                         </h2>
                         <button
-                            className="btn btn-warning btn-lg" // Botón más grande
+                            className="btn btn-warning btn-lg"
                             onClick={handleAddToCart}
                         >
                             Añadir al Carrito 🛒
                         </button>
-                        <Link to="/tienda" className="btn btn-outline-secondary ms-3 btn-lg">
+                        <Link to="/tienda" className="btn btn-outline-warning ms-3 btn-lg">
                             Volver a la Tienda
                         </Link>
                     </div>
                 </div>
             </div>
+
         </main>
+
     );
 };
 

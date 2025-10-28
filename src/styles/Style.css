@@ -1,4 +1,4 @@
-/* --- 1. ESTILOS GLOBALES Y BASE --- */
+/* --- . ESTILOS GLOBALES Y BASE --- */
 * {
     margin: 0;
     padding: 0;
@@ -164,7 +164,7 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
 }
 
 
-/* --- 3. COMPONENTES REUTILIZABLES --- */
+/* --- . COMPONENTES REUTILIZABLES --- */
 
 
 .card {
@@ -214,15 +214,6 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     flex-grow: 1;
 }
 
-
-.productos-grid .card .card-text,
-#featured .card .card-text {
-    font-size: 16px;
-    color: var(--color-acento2) !important;
-    font-weight: bold;
-}
-
-
 .card .btn {
     margin-top: auto;
 }
@@ -234,6 +225,57 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
     border-radius: 50px !important;
     width: 100%;
 }
+
+/* --- PÁGINA DETALLES DEL PRODUCTO (ProductDetailPage) --- */
+
+.productos-grid .card .card-text,
+#featured .card .card-text {
+    font-size: 16px;
+    color: var(--color-acento2) !important;
+    font-weight: bold;
+}
+
+.product-detail-container .row {
+    align-items: center;
+}
+
+.product-detail-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--color-acento1);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.product-detail-info h1 {
+    margin-bottom: 0.75rem;
+}
+
+.product-detail-info h4.text-muted {
+    margin-bottom: 1.5rem;
+    font-family: var(--fuente-principal);
+    font-weight: normal;
+}
+
+.product-detail-info p.lead {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.product-detail-info h2 { /* Precio */
+    color: var(--color-acento2);
+    margin-bottom: 2rem;
+}
+
+.product-detail-info .btn {
+    margin-right: 0.5rem;
+}
+
 
 
 /* --- FORMULARIOS (Login/Registro/Filtros) --- */
@@ -757,7 +799,7 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
      background-color: var(--color-gris-oscuro);
 }
 
-/* --- 5. ESTILOS RESPONSIVE (Media Queries) --- */
+/* --- . ESTILOS RESPONSIVE (Media Queries) --- */
 
 @media (max-width: 768px) {
 
