@@ -1,4 +1,5 @@
 import React from 'react';
+import TestimonialsSection from '../components/TestimonialsSection';
 
 const NosotrosPage = () => {
     return (
@@ -35,7 +36,9 @@ const NosotrosPage = () => {
                         style={{ width: '900px', height: 'auto' }}
                     />
                 </div>
+
             </div>
+
         </main>
     );
 };

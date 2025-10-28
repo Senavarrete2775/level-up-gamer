@@ -799,6 +799,89 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
      background-color: var(--color-gris-oscuro);
 }
 
+/* --- . testimonial estilos --- */
+.testimonials {
+    padding: 3rem 0; /* Añade espacio vertical */
+    background-color: var(--color-fondo-principal); /* Asegura el fondo negro */
+}
+.container-narrow {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el contenedor */
+}
+.testimonials h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--color-texto-principal);
+    /* El h2 ya tiene la fuente 'Orbitron' global, así que no es necesario repetirla */
+}
+.testimonials .grid {
+    display: grid;
+    /* Crea columnas automáticas que se adaptan al espacio */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem; /* Espacio entre las tarjetas */
+}
+
+.testimonial-card {
+    background-color: var(--color-gris-oscuro);
+    border: 1px solid var(--color-acento1);
+    border-radius: 14px;
+    padding: 1.25rem 1.35rem;
+    box-shadow: 0 4px 14px rgba(0,0,0,.35);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+:root[data-theme="dark"] .testimonial-card,
+.dark .testimonial-card {
+    background: #0f0f11;
+    border-color: #1f1f23;
+    box-shadow: 0 10px 24px rgba(0,0,0,.35);
+}
+
+.testimonial-card .stars {
+    display: flex;
+    gap: .25rem;
+    margin-bottom: .75rem;
+}
+
+.testimonial-card .quote {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0 0 1rem 0;
+    color: var(--color-texto-principal);
+    flex-grow: 1;
+}
+
+:root[data-theme="dark"] .testimonial-card .quote,
+.dark .testimonial-card .quote {
+    color: #e9e9ee;
+}
+
+.testimonial-card .author {
+    font-weight: 700;
+    margin: 0 0 .75rem 0;
+    text-align: center;
+    color: var(--color-texto-secundario);
+}
+
+.testimonial-card .verified {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    color: var(--color-acento1);
+    font-weight: 600;
+}
+
+.testimonial-card .verified svg {
+    stroke: currentColor;
+}
+.testimonial-card .verified svg circle,
+.testimonial-card .verified svg path {
+    stroke: currentColor;
+}
+
 /* --- . ESTILOS RESPONSIVE (Media Queries) --- */
 
 @media (max-width: 768px) {

@@ -5,6 +5,7 @@ import { products } from '../data/products.js';
 import { useCart } from '../components/context/CartContext';
 import { toast } from 'react-toastify';
 import PromoSlider from '../components/PromoSlider';
+import TestimonialsSection from "./TestimonialsSection";
 
 const ProductDetailPage = () => {
 
@@ -44,6 +45,7 @@ const ProductDetailPage = () => {
                 </div>
             </section>
             <div className="container py-5 product-detail-container">
+
                 <div className="row">
                     <div className="col-md-6 mb-4 mb-md-0 d-flex justify-content-center">
                         <img
@@ -73,7 +75,9 @@ const ProductDetailPage = () => {
                     </div>
                 </div>
             </div>
-
+            <section id="clientes" style={{ marginTop: '2.5rem' }}>
+                <TestimonialsSection />
+            </section>
         </main>
 
     );
