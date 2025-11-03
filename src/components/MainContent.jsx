@@ -105,7 +105,6 @@ function MainContent() {
                     <h2 className="text-center mb-5">Últimas Noticias</h2>
                     <div className="row justify-content-center">
 
-                        {/* 2. USA .MAP() PARA RENDERIZAR LAS NOTICIAS */}
                         {newsData.map(article => (
                             <div className="col-lg-6 mb-4" key={article.id}>
                                 <div className="card shadow-sm">

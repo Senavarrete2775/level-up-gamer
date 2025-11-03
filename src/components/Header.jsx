@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Importa useNavigate
-import { useCart } from './context/CartContext';
-import { useAuth } from './context/AuthContext'; // <-- 1. Importa useAuth
-import { toast } from 'react-toastify'; // Para feedback del logout
+import { Link, useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
+import { toast } from 'react-toastify';
+import LogoPrin from '../img/layout/logo_letras_gb_negro.png';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { totalItems } = useCart();
-    const { currentUser, logout } = useAuth(); // <-- 2. Obtén currentUser y logout
-    const navigate = useNavigate(); // Para redirigir después del logout
+    const { currentUser, logout } = useAuth();
+    const navigate = useNavigate();
 
     const handleMenuToggle = (e) => {
         e.preventDefault();
@@ -29,7 +30,7 @@ const Header = () => {
     return (
         <header className="header">
             <a href="/" className="logo">
-                <img src="/images/layout/logo_letras_gb_negro.png" alt="logo" />
+                <img src={LogoPrin} alt="logo" />
             </a>
 
             <div className={`nav-right ${isMenuOpen ? 'active' : ''}`}>

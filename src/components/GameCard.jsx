@@ -1,11 +1,11 @@
 import React from 'react';
-import { useCart } from './context/CartContext';
+import { useCart } from '../context/CartContext';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
 
 const GameCard = ({ game }) => {
-    const { id, name, price, image, category } = game;// <-- 2. Get addToCart function
+    const { id, name, price, image, category } = game;//
 
     const { addItemToCart } = useCart();
 
@@ -30,7 +30,7 @@ const GameCard = ({ game }) => {
                     <h6 className="card-subtitle mb-2 text-muted">{category}</h6>
                     <p className="card-text">{formattedPrice}</p>
                     <button
-                        className="btn btn-warning w-100" // Añadí w-100
+                        className="btn btn-warning w-100"
                         onClick={handleAddToCart}
                     >
                         Añadir al Carrito 🛒

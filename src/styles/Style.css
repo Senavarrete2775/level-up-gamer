@@ -360,7 +360,7 @@ h1, h2, h3, h4, h5, h6, .titulo-juegos, .titulo-nosotros {
 
 .video-player-wrapper {
     position: relative;
-    padding-bottom: 56.25%;
+    padding-bottom: 40%;
     height: 0;
     overflow: hidden;
     width: 100%;

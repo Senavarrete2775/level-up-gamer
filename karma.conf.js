@@ -16,7 +16,20 @@ const webpackConfig = {
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(png|jpe?g|gif|webp|svg|avif)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'images/'
+                        }
+                    }
+                ]
             }
+
         ]
     },
     resolve: {
@@ -28,13 +41,13 @@ module.exports = function(config) {
     config.set({
         frameworks: ['jasmine'],
         files: [
-            'src/**/*.test.js'
+            'src/test/**/*.test.js'
         ],
         preprocessors: {
-            'src/**/*.test.js': ['webpack'],
+            'src/test/**/*.test.js': ['webpack'],
 
-            'src/**/!(*.test).js': ['webpack', 'coverage'],
-            'src/**/!(*.test).jsx': ['webpack', 'coverage']
+            'src/test/**/!(*.test).js': ['webpack', 'coverage'],
+            'src/test/**/!(*.test).jsx': ['webpack', 'coverage']
         },
         webpack: webpackConfig,
 

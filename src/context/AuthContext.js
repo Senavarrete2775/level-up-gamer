@@ -53,7 +53,6 @@ export const AuthProvider = ({ children }) => {
         return newUser;
     };
 
-    // Función de Login
     const login = (email, password) => {
         const users = getRegisteredUsers();
         const user = users.find(u => u.email === email && u.password === password); // ¡INSEGURO!

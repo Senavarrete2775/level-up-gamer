@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import LogoContacto from '../img/layout/ContactoLogo.png';
 
 const Contactopage = () => {
 
@@ -8,11 +9,10 @@ const Contactopage = () => {
 
 
     const handleSubmit = (e) => {
-        e.preventDefault(); // Evita que la página se recargue
+        e.preventDefault();
 
         alert(`¡Mensaje enviado! Gracias por contactarnos, ${nombre}.`);
 
-        // Limpiamos los campos del formulario
         setNombre('');
         setEmail('');
         setMensaje('');
@@ -27,7 +27,7 @@ const Contactopage = () => {
 
                     <div className="col-12 text-center mb-4">
                         <img
-                            src="/images/layout/ContactoLogo.png"
+                            src={LogoContacto}
                             alt="Logo Level-Up Gamer Contacto"
                             style={{ width: '350px', height: 'auto' }}
                         />

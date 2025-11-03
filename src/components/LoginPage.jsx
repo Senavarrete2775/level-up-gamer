@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../components/context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
+import LoginLogo from '../img/layout/LoginLogo.png';
 
 
 
@@ -29,7 +30,7 @@ const LoginPage = () => {
             <div className="container" style={{ maxWidth: '500px' }}>
                 <div className="text-center mb-4">
                     <img
-                        src="/images/layout/LoginLogo.png"
+                        src={LoginLogo}
                         alt="Logo Level-Up Gamer"
                         style={{ width: '450px', height: 'auto' }}
                     />

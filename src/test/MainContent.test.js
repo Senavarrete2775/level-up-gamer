@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import MainContent from './MainContent';
-import * as CartContext from './context/CartContext';
+import MainContent from '../components/MainContent';
+import * as CartContext from '../context/CartContext';
 
 
 describe('MainContent Integration (con Jasmine/Karma)', () => {

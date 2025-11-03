@@ -1,7 +1,6 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import { Routes, Route } from 'react-router-dom'; // 1. Importa Routes y Route
-
 import RegistroPage from './components/RegistroPage';
 import TiendaPage from './components/TiendaPage';
 import Contactopage from './components/Contactopage';

@@ -1,5 +1,5 @@
 import React from 'react';
-import TestimonialsSection from '../components/TestimonialsSection';
+import logoNosotros from '../img/layout/logoNosotros.png'
 
 const NosotrosPage = () => {
     return (
@@ -31,7 +31,7 @@ const NosotrosPage = () => {
                 </div>
                 <div className="text-center">
                     <img
-                        src="/images/layout/logoNosotros.png"
+                        src={logoNosotros}
                         alt="Logo Level-Up Gamer"
                         style={{ width: '900px', height: 'auto' }}
                     />

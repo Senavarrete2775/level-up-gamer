@@ -2,20 +2,20 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
-import GameCard from './GameCard';
-import * as CartContext from './context/CartContext';
+import GameCard from '../components/GameCard';
+import * as CartContext from '../context/CartContext';
 
-let mockGame = { };
-mockGame = {
+const mockGame = {
     id: 'JM001',
     name: 'Catan',
     category: 'Juegos de Mesa',
     price: 29990,
-    image: 'images/products/catan.jpg'
+    image: 'catan.jpg'
 };
 
 
 describe('GameCard Component (con Jasmine/Karma)', () => {
+
     const mockAddItemToCart = jasmine.createSpy('addItemToCart');
 
     beforeEach(() => {
@@ -35,6 +35,10 @@ describe('GameCard Component (con Jasmine/Karma)', () => {
         expect(screen.getByText('Catan')).not.toBeNull();
         expect(screen.getByText('Juegos de Mesa')).not.toBeNull();
         expect(screen.getByText('$29.990')).not.toBeNull(); // Sin espacio
+
+        const image = screen.getByAltText('Catan');
+        expect(image).not.toBeNull();
+        expect(image.src).toContain('catan.jpg');
     });
 
     it('debe llamar a addItemToCart con el juego correcto al hacer clic', () => {

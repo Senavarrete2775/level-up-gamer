@@ -2,10 +2,10 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import RegistroPage from './RegistroPage';
+import RegistroPage from '../components/RegistroPage';
 
 
-import * as AuthContext from '../components/context/AuthContext';
+import * as AuthContext from '../context/AuthContext';
 
 describe('RegistroPage (con Jasmine/Karma)', () => {
 

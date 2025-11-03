@@ -2,10 +2,8 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import Tienda from './TiendaPage'
-
-
-import * as CartContext from '../components/context/CartContext'; // Ajusta la ruta
+import Tienda from '../components/TiendaPage'
+import * as CartContext from '../context/CartContext';
 
 describe('Tienda Page (con Jasmine/Karma)', () => {
 

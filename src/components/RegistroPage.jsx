@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../components/context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
+import RegistroLogo from '../img/layout/RegistroLogo.png'
 
 const RegistroPage = () => {
     const [email, setEmail] = useState('');
@@ -35,7 +36,7 @@ const RegistroPage = () => {
             <div className="container" style={{ maxWidth: '500px' }}>
                 <div className="text-center mb-4">
                     <img
-                        src="/images/layout/RegistroLogo.png"
+                        src={RegistroLogo}
                         alt="Logo Level-Up Gamer"
                         style={{ width: '450px', height: 'auto' }}
                     />

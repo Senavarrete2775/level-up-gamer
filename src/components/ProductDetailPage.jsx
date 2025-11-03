@@ -2,7 +2,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { products } from '../data/products.js';
-import { useCart } from '../components/context/CartContext';
+import { useCart } from '../context/CartContext';
 import { toast } from 'react-toastify';
 import PromoSlider from '../components/PromoSlider';
 import TestimonialsSection from "./TestimonialsSection";

@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import Header from './Header';
-import * as CartContext from './context/CartContext';
-import * as AuthContext from './context/AuthContext';
+import Header from '../components/Header';
+import * as CartContext from '../context/CartContext';
+import * as AuthContext from '../context/AuthContext';
 
 
 describe('Header Component (con Jasmine/Karma)', () => {
